@@ -1,0 +1,18 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Vladimir Samorodov
+	email = vovchikan@gmail.com
+[core]
+	editor = nvim
+[merge]
+	ff = false
+[alias]
+	lol = log --oneline
+	lol3 = lol -3
+	lol5 = lol -5
+  pull = pull --ff-only
+[rebase]
+	autoSquash = true
+	abbreviateCommands = true
+[pull]
+	ff = only
