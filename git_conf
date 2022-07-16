@@ -10,7 +10,7 @@
 	lol = log --oneline
 	lol3 = lol -3
 	lol5 = lol -5
-  pull = pull --ff-only
+	pull = pull --ff-only
 [rebase]
 	autoSquash = true
 	abbreviateCommands = true
