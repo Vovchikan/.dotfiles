@@ -16,7 +16,6 @@
 # Install all the things:
 brew 'zsh'
 brew 'ssh-copy-id'
-brew 'fasd' # Fast directory switcher
 brew 'git'
 brew 'stow'
 brew 'tmux'
@@ -26,6 +25,8 @@ brew 'ag' # Faster grep
 brew 'ncdu' # ncurses-based directory/file size viewer
 brew 'tree'
 brew 'fzf'
+brew 'coreutils' # asdf-deps
+brew 'neofetch' # for pretty print
 
 # Databases
 # brew 'sqlite'

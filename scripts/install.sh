@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
-DPATH="$script_dir/.." # install -> scripts -> .dotfiles
+DPATH="$script_dir/.." # scripts -> .dotfiles
 
 set -Eeuo pipefail
 
@@ -9,10 +9,14 @@ function main() {
 
   software 
 
-  langs
+  echo
+  read -r -p "Install langs? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+    langs
+  fi
 
-  # $DPATH/scripts/linkconfigs.sh
-
+  $script_dir/configs.sh
 }
 
 function software() {
@@ -79,14 +83,6 @@ EOF
   brew bundle install --file $DPATH/Brewfile
 
   echo
-  echo "+---------------------------------+"
-  echo "|        Installing asdf-deps     |"
-  echo "|        coureutils               |"
-  echo "+---------------------------------+"
-  echo
-  brew install coreutils
-
-  echo
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
@@ -116,6 +112,9 @@ EOF
   ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
 
   # Place the kitty.desktop file somewhere it can be found by the OS
+  if [ ! -d "~/.local/share/applications/" ]; then
+    mkdir ~/.local/share/applications/
+  fi
   cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
   # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
   cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
@@ -123,6 +122,13 @@ EOF
   sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
   sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 
+
+  echo
+  echo "+---------------------------------+"
+  echo "|        Installing rclone        |"
+  echo "+---------------------------------+"
+  echo
+  curl https://rclone.org/install.sh | sudo bash
 
 }
 
@@ -133,10 +139,20 @@ function langs () {
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
   echo
-  brew install gpg tar
   asdf plugin-add nodejs
   asdf install nodejs 16.13.0
   asdf global nodejs 16.13.0
+
+
+  echo
+  echo "+---------------------------------+"
+  echo "|        Installing Erlang        |"
+  echo "+---------------------------------+"
+  echo
+  sudo apt install -y build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev openjdk-11-jdk
+  asdf plugin-add erlang
+  asdf install erlang 25.0.4
+  asdf global erlang 25.0.4
 
 }
 
