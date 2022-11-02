@@ -35,7 +35,7 @@ function software() {
   if [ -f "~/.bash_profile" ]; then
     mv -v ~/.bash_profile /tmp/bash_profile.backup
   fi
-  mv -v $DPATH/templates/bash_profile.template ~/.bash_profile
+  cp -v $DPATH/templates/bash_profile.template ~/.bash_profile
 
   echo
   echo "+---------------------------------+"
