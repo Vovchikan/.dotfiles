@@ -1,2 +1,3 @@
 *.patch
 tme@*
+Brewfile.lock.json
