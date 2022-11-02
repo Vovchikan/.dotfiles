@@ -27,14 +27,3 @@ echo "+---------------------------------+"
 echo
 cd $DPATH
 stow -v tmux git konsole
-
-echo
-echo "+---------------------------------+"
-echo "|   Download tmux plug manager    |"
-echo "|       and all tmux plugins      |"
-echo "+---------------------------------+"
-echo
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
-    ~/.tmux/plugins/tpm/bin/install_plugins
-fi
