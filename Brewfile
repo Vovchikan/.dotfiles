@@ -19,6 +19,7 @@ brew 'ssh-copy-id'
 brew 'git'
 brew 'stow'
 brew 'tmux'
+brew 'vim'
 brew 'htop'
 brew 'iftop'
 brew 'ag' # Faster grep
