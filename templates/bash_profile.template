@@ -1,0 +1,28 @@
+# Startup file for bash login shells.
+#
+default_dir=/usr/local/lib/
+
+if [ -n "$PS1" ]; then
+	PS1='\u@\h(\#)\$ '
+	IGNOREEOF=3
+fi
+
+LOGIN_SHELL=true
+
+# If the user has her own init file, then use that one, else use the
+# canonical one.
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+elif [ -f ${default_dir}Bashrc ]; then
+	. ${default_dir}Bashrc;
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
