@@ -4,7 +4,7 @@ DIR=".dotfiles"
 TAR_FILE="/tmp/dotf.tar.gz"
 PWD=$(pwd)
 
-cd ~/repos/
+cd ~
 tar -cvzf $TAR_FILE $DIR
 cd $PWD
 
