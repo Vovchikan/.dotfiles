@@ -10,6 +10,13 @@ function main() {
   software 
 
   echo
+  read -r -p "Install neovim? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+    neovim
+  fi
+
+  echo
   read -r -p "Install langs? [y/N] " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
   then
@@ -103,13 +110,6 @@ EOF
 
   echo
   echo "+---------------------------------+"
-  echo "|        Installing NeoVim        |"
-  echo "+---------------------------------+"
-  echo
-  brew install neovim
-
-  echo
-  echo "+---------------------------------+"
   echo "|        Installing kitty         |"
   echo "+---------------------------------+"
   echo
@@ -140,6 +140,17 @@ EOF
   echo "+---------------------------------+"
   echo
   curl https://rclone.org/install.sh | sudo bash
+
+}
+
+function neovim () {
+
+  echo
+  echo "+---------------------------------+"
+  echo "|        Installing NeoVim        |"
+  echo "+---------------------------------+"
+  echo
+  brew install neovim
 
 }
 
