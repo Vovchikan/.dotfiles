@@ -117,15 +117,11 @@ EOF
 
   # Create a symbolic link to add kitty to PATH (assuming ~/.local/bin is in
   # your system-wide PATH)
-  if [ ! -d "~/.local/bin" ]; then
-    mkdir ~/.local/bin
-  fi
-  ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/
+  mkdir -vp ~/.local/bin
+  ln -sf ~/.local/kitty.app/bin/kitty ~/.local/bin/
 
   # Place the kitty.desktop file somewhere it can be found by the OS
-  if [ ! -d "~/.local/share/applications/" ]; then
-    mkdir ~/.local/share/applications/
-  fi
+  mkdir -vp ~/.local/share/applications
   cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
   # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
   cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
@@ -139,7 +135,8 @@ EOF
   echo "|        Installing rclone        |"
   echo "+---------------------------------+"
   echo
-  curl https://rclone.org/install.sh | sudo bash
+  # Installing rclone with ignoring all errors -> || true
+  curl https://rclone.org/install.sh | (sudo bash || true)
 
 }
 
