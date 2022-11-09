@@ -28,6 +28,7 @@ brew 'tree'
 brew 'fzf'
 brew 'coreutils' # asdf-deps
 brew 'neofetch' # for pretty print
+brew 'openconnect' # for vpn connection
 
 # Databases
 # brew 'sqlite'
