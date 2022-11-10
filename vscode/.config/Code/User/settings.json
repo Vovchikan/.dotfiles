@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "editor.fontFamily": "JetBrains Mono NL",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "bold",
+    "editor.fontLigatures": true,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.copyOnSelection": true,
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true
+}
