@@ -138,6 +138,13 @@ EOF
   # Installing rclone with ignoring all errors -> || true
   curl https://rclone.org/install.sh | (sudo bash || true)
 
+  echo
+  echo "+---------------------------------+"
+  echo "|        Installing gitk          |"
+  echo "+---------------------------------+"
+  echo
+  sudo apt install gitk
+
 }
 
 function neovim () {
