@@ -7,6 +7,13 @@ set -Eeuo pipefail
 
 function main() {
 
+  echo
+  echo "+---------------------------------+"
+  echo "|       Download submodules       |"
+  echo "+---------------------------------+"
+  echo
+  git submodule update --recursive --init
+
   software 
 
   echo
