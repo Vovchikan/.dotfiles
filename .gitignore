@@ -1,3 +1,10 @@
+# Brew
+Brewfile.lock.json
+
+# Kitty
+kitty.conf.bak
+kitty.conf.swp
+
+# Etc
 *.patch
 tme@*
-Brewfile.lock.json
