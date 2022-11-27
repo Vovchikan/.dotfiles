@@ -8,5 +8,6 @@
     "files.autoSave": "afterDelay",
     "terminal.integrated.copyOnSelection": true,
     "workbench.iconTheme": "vscode-icons",
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "trailing-spaces.highlightCurrentLine": false
 }
