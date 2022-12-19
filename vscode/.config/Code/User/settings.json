@@ -22,5 +22,9 @@
     "terminal.integrated.copyOnSelection": true,
     "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
-    "trailing-spaces.highlightCurrentLine": false
+    "trailing-spaces.highlightCurrentLine": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "explorer.confirmDelete": false,
+    "elixirLS.suggestSpecs": false,
+    "editor.tabSize": 2
 }
