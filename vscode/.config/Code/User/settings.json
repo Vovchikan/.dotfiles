@@ -1,4 +1,17 @@
 {
+    "launch": {
+
+      "configurations": [
+        {
+          "type": "mix_task",
+          "name": "start phoenix server",
+          "request": "launch",
+          "projectDir": "${workspaceRoot}",
+          "task": "phx.server"
+        }
+      ],
+      "compounds": []
+    },
     "workbench.colorTheme": "GitHub Dark Dimmed",
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 14,
