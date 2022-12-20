@@ -47,7 +47,7 @@ function main() {
 function software() {
 
   if [ -f "~/.bash_profile" ]; then
-    mv -v ~/.bash_profile /tmp/bash_profile.backup
+    mv -v ~/.bash_profile ~/.bash_profile.backup
   fi
   cp -v $DPATH/templates/bash_profile.template ~/.bash_profile
 
@@ -94,6 +94,15 @@ then
       [[ -r "\${COMPLETION}" ]] && source "\${COMPLETION}"
     done
   fi
+fi
+
+# ---------------------------------------------------------------- #
+
+# brew bash-git-prompt
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  GIT_PROMPT_ONLY_IN_REPO=1
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
 # ---------------------------------------------------------------- #

@@ -1,7 +1,7 @@
 # Jeff Widman's Brewfile
 # To make it so Homebrew can handle Brewfiles:
 #   `brew tap Homebrew/bundle`
-#   `brew bundle --file=~/.dotfiles/homebrew/.Brewfile`
+#   `brew bundle --file=~/.dotfiles/Brewfile`
 
 # Generally life is simplest to not update OSX default SSH
 # Because making a non-Apple SSH work with the OSX Keychain can be a pain
@@ -17,6 +17,7 @@
 brew 'zsh'
 brew 'ssh-copy-id'
 brew 'git'
+brew 'bash-git-prompt'
 brew 'stow'
 brew 'tmux'
 brew 'vim'
