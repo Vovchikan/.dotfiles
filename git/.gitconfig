@@ -4,6 +4,7 @@
 	email = vovchikan@gmail.com
 [core]
 	editor = nvim
+	excludesFile = ~/.gitignore
 [merge]
 	ff = false
 [alias]
