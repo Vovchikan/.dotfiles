@@ -16,5 +16,9 @@ AutoCopySelectedText=true
 OpenLinksByDirectClickEnabled=true
 UnderlineFilesEnabled=true
 
+[Scrolling]
+HistoryMode=1
+HistorySize=10000
+
 [Terminal Features]
 FlowControlEnabled=false
