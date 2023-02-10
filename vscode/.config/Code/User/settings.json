@@ -12,7 +12,6 @@
       ],
       "compounds": []
     },
-    "workbench.colorTheme": "GitHub Dark Dimmed",
     "editor.fontFamily": "JetBrains Mono",
     "editor.fontSize": 14,
     "editor.fontWeight": "bold",
@@ -20,11 +19,12 @@
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",
     "terminal.integrated.copyOnSelection": true,
-    "workbench.iconTheme": "vscode-icons",
     "vsicons.dontShowNewVersionMessage": true,
     "trailing-spaces.highlightCurrentLine": false,
     "security.workspace.trust.untrustedFiles": "open",
     "explorer.confirmDelete": false,
     "elixirLS.suggestSpecs": false,
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "workbench.colorTheme": "GitHub Dark",
+    "workbench.iconTheme": "vscode-icons"
 }

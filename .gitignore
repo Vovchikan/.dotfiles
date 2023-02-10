@@ -5,6 +5,10 @@ Brewfile.lock.json
 kitty.conf.bak
 kitty.conf.swp
 
+#vscode
+vscode/.config/Code/*
+!/vsdoce/.config/Code/User/settings.json
+
 # Etc
 *.patch
 tme@*
