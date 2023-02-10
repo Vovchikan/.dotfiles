@@ -7,14 +7,14 @@ set -Eeuo pipefail
 
 function main() {
 
+  software
+
   echo
   echo "+---------------------------------+"
   echo "|       Download submodules       |"
   echo "+---------------------------------+"
   echo
   git submodule update --recursive --init
-
-  software 
 
   echo
   read -r -p "Install neovim? [y/N] " response
@@ -156,10 +156,11 @@ EOF
 
   echo
   echo "+---------------------------------+"
-  echo "|        Installing gitk          |"
+  echo "|        Installing gitk,         |"
+  echo "|         qBittorrent             |"
   echo "+---------------------------------+"
   echo
-  sudo apt install gitk
+  sudo apt install gitk qbittorrent
 
 }
 
