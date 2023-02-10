@@ -9,6 +9,9 @@ kitty.conf.swp
 vscode/.config/Code/*
 !/vsdoce/.config/Code/User/settings.json
 
+#qBittorrent
+qbittorrent/.config/qBittorrent/rss/
+
 # Etc
 *.patch
 tme@*

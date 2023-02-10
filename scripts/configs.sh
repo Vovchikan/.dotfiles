@@ -26,4 +26,4 @@ echo "|      Linking config files       |"
 echo "+---------------------------------+"
 echo
 cd $DPATH
-stow -v tmux git konsole vim kitty gitk vscode
+stow -v tmux git konsole vim kitty gitk vscode qbittorrent
