@@ -197,6 +197,14 @@ function langs () {
   asdf install erlang 25.0.4
   asdf global erlang 25.0.4
 
+  # This need for Phoenix framework
+  echo
+  echo "+---------------------------------+"
+  echo "|      Installing inotify-tools   |"
+  echo "+---------------------------------+"
+  echo
+  sudo apt install inotify-tools
+
 }
 
 main
