@@ -5,9 +5,12 @@ Brewfile.lock.json
 kitty.conf.bak
 kitty.conf.swp
 
-#vscode
-vscode/.config/Code/*
-!/vsdoce/.config/Code/User/settings.json
+# vscode
+/vscode/.config/Code/*
+# don't ignore User dir
+!/vscode/.config/Code/User
+# ignore dirs in User dir
+/vscode/.config/Code/User/*/
 
 #qBittorrent
 qbittorrent/.config/qBittorrent/rss/

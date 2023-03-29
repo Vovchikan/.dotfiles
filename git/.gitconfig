@@ -5,8 +5,6 @@
 [core]
 	editor = nvim
 	excludesFile = ~/.gitignore
-[merge]
-	ff = false
 [alias]
 	lol = log --oneline
 	lol3 = lol -3
