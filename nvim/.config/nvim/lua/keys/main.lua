@@ -12,3 +12,11 @@ nm('<leader>p', '"+p')
 nm('<leader>P', '"+P')
 vm('<leader>p', '"+p')
 vm('<leader>P', '"+P')
+
+-- Use jk | kj instead ESC
+im('jk', '<Esc>')
+im('kj', '<Esc>')
+
+-- Better tabbing
+vm('<', '<gv')
+vm('>', '>gv')
