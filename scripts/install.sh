@@ -121,8 +121,9 @@ EOF
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
   echo
-  brew install asdf
-  echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ~/.bash_profile
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
+  echo -e "\n. \"$HOME/.asdf/asdf.sh\"" >> ~/.bash_profile
+  echo -e "\n. \"$HOME/.asdf/completions/asdf.bash\"" >> ~/.bash_profile
 
   echo
   echo "+---------------------------------+"
@@ -196,6 +197,17 @@ function langs () {
   asdf plugin-add erlang
   asdf install erlang 25.0.4
   asdf global erlang 25.0.4
+
+
+  echo
+  echo "+---------------------------------+"
+  echo "|        Installing Elixir        |"
+  echo "+---------------------------------+"
+  echo
+  sudo apt install -y unzip
+  asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+  asdf install elixir 1.14.1-otp-25
+  asdf global elixir 1.14.1-otp-25
 
   # This need for Phoenix framework
   echo
