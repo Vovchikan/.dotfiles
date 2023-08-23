@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Otto
-Font=JetBrains Mono,12,-1,5,12,0,0,0,0,0,ExtraLight
+Font=JetBrains Mono Medium,12,-1,5,57,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [General]

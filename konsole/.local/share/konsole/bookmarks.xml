@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:kdepriv="http://www.kde.org/kdepriv" dbusName="konsole" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" folded="no" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks">
+<xbel dbusName="konsole" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" folded="no" xmlns:kdepriv="http://www.kde.org/kdepriv">
  <bookmark href="file:///home/svv/dvp/ucell">
   <title>ucell</title>
   <info>
@@ -9,12 +9,13 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/svv/.local/bin">
-  <title>private_scripts</title>
+ <bookmark href="file:///home/svv/Work/scripts">
+  <title>work-scripts</title>
   <info>
    <metadata owner="http://freedesktop.org">
     <bookmark:icon name=""/>
    </metadata>
   </info>
+  <desc></desc>
  </bookmark>
 </xbel>
