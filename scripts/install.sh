@@ -17,13 +17,6 @@ function main() {
   git submodule update --recursive --init
 
   echo
-  read -r -p "Install neovim? [y/N] " response
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-  then
-    neovim
-  fi
-
-  echo
   read -r -p "Install langs? [y/N] " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
   then
@@ -53,68 +46,30 @@ function software() {
 
   echo
   echo "+---------------------------------+"
-  echo "|        Installing brew-deps     |"
-  echo "|            WITH SUDO            |"
-  echo "|        procps curl file git     |"
-  echo "|          build-essential        |"
+  echo "|        Installing curl git      |"
+  echo "|     build-essential coreutils   |"
   echo "+---------------------------------+"
   echo
-  sudo apt-get install -y build-essential procps curl file git
+  sudo apt install -y build-essential curl git
 
   echo
   echo "+---------------------------------+"
-  echo "|        Installing brew          |"
+  echo "|        Installing nix           |"
   echo "+---------------------------------+"
   echo
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  # Run these three commands in your terminal to add Homebrew to your PATH:
-  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
+  sh <(curl -L https://nixos.org/nix/install) --daemon
 
   echo
   echo "+---------------------------------+"
-  echo "|  Configure brew completion      |"
+  echo "|   Installing nvim vim htop      |"
+  echo "|          neofetch stow          |"
   echo "+---------------------------------+"
   echo
-tee -a ~/.bash_profile << EOF
-
-# ---------------------------------------------------------------- #
-
-# brew bash completion
-if type brew &>/dev/null
-then
-  HOMEBREW_PREFIX="\$(brew --prefix)"
-  if [[ -r "\${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]
-  then
-    source "\${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-  else
-    for COMPLETION in "\${HOMEBREW_PREFIX}/etc/bash_completion.d/"*
-    do
-      [[ -r "\${COMPLETION}" ]] && source "\${COMPLETION}"
-    done
-  fi
-fi
-
-# ---------------------------------------------------------------- #
-
-# brew bash-git-prompt
-if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
-  GIT_PROMPT_ONLY_IN_REPO=1
-  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
-fi
-
-# ---------------------------------------------------------------- #
-
-EOF
-
-  echo
-  echo "+---------------------------------+"
-  echo "|    Installing brew bundle       |"
-  echo "+---------------------------------+"
-  echo
-  brew bundle install --file $DPATH/Brewfile
+  nix-env -iA nixpkgs.neovim
+  nix-env -iA nixpkgs.vim
+  nix-env -iA nixpkgs.htop
+  nix-env -iA nixpkgs.stow
+  nix-env -iA nixpkgs.neofetch
 
   echo
   echo "+-------------------------------+"
@@ -142,17 +97,6 @@ EOF
 
 }
 
-function neovim () {
-
-  echo
-  echo "+---------------------------------+"
-  echo "|        Installing NeoVim        |"
-  echo "+---------------------------------+"
-  echo
-  brew install neovim
-
-}
-
 function langs () {
 
   echo
@@ -172,8 +116,8 @@ function langs () {
   echo
   sudo apt install -y build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev openjdk-11-jdk
   asdf plugin-add erlang
-  asdf install erlang 25.0.4
-  asdf global erlang 25.0.4
+  asdf install erlang 25.3.2.5
+  asdf global erlang 25.3.2.5
 
 
   echo

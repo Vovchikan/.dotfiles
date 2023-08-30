@@ -16,19 +16,11 @@
 # Install all the things:
 brew 'zsh'
 brew 'ssh-copy-id'
-brew 'git'
 brew 'bash-git-prompt'
-brew 'stow'
-brew 'tmux'
-brew 'vim'
-brew 'htop'
-brew 'iftop'
 brew 'ag' # Faster grep
 brew 'ncdu' # ncurses-based directory/file size viewer
 brew 'tree'
 brew 'fzf'
-brew 'coreutils' # asdf-deps
-brew 'neofetch' # for pretty print
 
 # Databases
 # brew 'sqlite'

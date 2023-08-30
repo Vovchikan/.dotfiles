@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel dbusName="konsole" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" folded="no" xmlns:kdepriv="http://www.kde.org/kdepriv">
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" dbusName="konsole" folded="no">
  <bookmark href="file:///home/svv/dvp/ucell">
   <title>ucell</title>
   <info>
@@ -11,6 +11,24 @@
  </bookmark>
  <bookmark href="file:///home/svv/Work/scripts">
   <title>work-scripts</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name=""/>
+   </metadata>
+  </info>
+  <desc/>
+ </bookmark>
+ <bookmark href="file:///home/svv/Work/otcheti/loans">
+  <title>otchet-loans</title>
+  <info>
+   <metadata owner="http://freedesktop.org">
+    <bookmark:icon name=""/>
+   </metadata>
+  </info>
+  <desc></desc>
+ </bookmark>
+ <bookmark href="file:///home/svv/dvp/Python/logicheskaya_voronka">
+  <title>otchet-logicheskaya_voronka</title>
   <info>
    <metadata owner="http://freedesktop.org">
     <bookmark:icon name=""/>
