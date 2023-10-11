@@ -21,3 +21,6 @@ After installation Nix & Home Manager:
 $ ~/.dotfiles/scripts/links.sh
 $ home-manager switch
 ```
+
+### Neovim config
+[Example](https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca)

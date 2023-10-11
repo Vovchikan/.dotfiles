@@ -20,7 +20,6 @@
   home.packages = [
     pkgs.htop
     pkgs.tmux
-    pkgs.neovim
     pkgs.keepassxc
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -100,4 +99,27 @@
     };
   };
 
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    extraLuaConfig = /* lua */ ''
+      vim.o.termguicolors=true
+      vim.o.mouse=a                 -- Enable your mouse
+
+      vim.o.tabstop       = 2 -- How many columns of whitespace a \t is worth.
+      vim.o.shiftwidth    = 2 -- Is how many columns of whitespace a 'level of indentation' is worth.
+      vim.o.softtabstop   = 2 -- How many columns of whitespace a tab keypress or a backspace keypress is worth.
+      vim.o.expandtab     = true -- use spaces instead of tabs (\t).
+      vim.o.scrolloff     = 8 -- set number of screen lines to keep above/below the cursor
+      vim.o.showtabline   = 2 -- Always show tabs (default 1)
+
+      -- Indent: https://neovim.io/doc/user/indent.html
+      vim.o.smartindent=true        -- Makes indenting smart
+      vim.o.autoindent=true         -- uses the indent from the previous line
+
+      -- Number of lines: https://neovim.io/doc/user/vim.oions.html#'number'
+      vim.o.number=true             -- Line numbers
+      vim.o.relativenumber=true			-- Set displayed number to be relative to the cursor
+    '';
+  };
 }
