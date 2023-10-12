@@ -19,7 +19,7 @@
   # environment.
   home.packages = [
     pkgs.htop
-    pkgs.tmux
+    pkgs.xclip
     pkgs.keepassxc
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -64,6 +64,10 @@
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  imports = [
+    ./home_manager_modules/tmux.nix
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
