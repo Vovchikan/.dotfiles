@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "vbuser";
-  home.homeDirectory = "/home/vbuser";
+  home.username = "svv";
+  home.homeDirectory = "/home/svv";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -60,7 +60,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/vbuser/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/svv/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
