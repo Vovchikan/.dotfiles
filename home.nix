@@ -21,6 +21,7 @@
     pkgs.htop
     pkgs.xclip
     pkgs.keepassxc
+    pkgs.screen
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -107,6 +108,12 @@
     enable = true;
     defaultEditor = true;
     extraLuaConfig = /* lua */ ''
+      local map = vim.api.nvim_set_keymap
+
+      function im(key, command)
+        map('i', key, command, {noremap = true})
+      end
+
       vim.o.termguicolors=true
       vim.o.mouse=a                 -- Enable your mouse
 
@@ -124,6 +131,10 @@
       -- Number of lines: https://neovim.io/doc/user/vim.oions.html#'number'
       vim.o.number=true             -- Line numbers
       vim.o.relativenumber=true			-- Set displayed number to be relative to the cursor
+
+      -- Keys
+      im('jk', '<Esc>')
+      im('kj', '<Esc>')
     '';
   };
 }

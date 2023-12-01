@@ -3,6 +3,7 @@
 {
   programs.tmux = {
     enable = true;
+    prefix = "C-q";
     terminal = "tmux-256color";
     historyLimit = 100000;
     extraConfig = ''
