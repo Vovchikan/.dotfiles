@@ -60,5 +60,18 @@
     "vim.handleKeys": {
       "<C-a>": false,
       "<C-f>": false
-    }
+    },
+    "window.zoomLevel": 1,
+    "editor.unicodeHighlight.allowedLocales": {
+      "ru": true
+    },
+    "plpgsqlLanguageServer.definitionFiles": [
+      "**/*.psql",
+      "**/*.pgsql",
+      "**/*.sql"
+    ],
+    "plpgsqlLanguageServer.port": 10432,
+    "plpgsqlLanguageServer.database": "ucell_dev",
+    "plpgsqlLanguageServer.defaultSchema": "ucell",
+    "plpgsqlLanguageServer.user": "ucell_dev"
 }
