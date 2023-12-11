@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
-<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" dbusName="konsole" folded="no">
+<xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" dbusName="konsole" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" folded="no">
  <bookmark href="file:///home/svv/dvp/ucell">
   <title>ucell</title>
   <info>
@@ -9,7 +9,7 @@
    </metadata>
   </info>
  </bookmark>
- <bookmark href="file:///home/svv/Work/scripts">
+ <bookmark href="file:///home/svv/repos/work-scripts/current">
   <title>work-scripts</title>
   <info>
    <metadata owner="http://freedesktop.org">
@@ -18,22 +18,21 @@
   </info>
   <desc/>
  </bookmark>
- <bookmark href="file:///home/svv/Work/otcheti/loans">
-  <title>otchet-loans</title>
+ <bookmark href="file:///home/svv/dvp/Python/ucell_reports">
+  <title>ucell reports</title>
   <info>
    <metadata owner="http://freedesktop.org">
     <bookmark:icon name=""/>
    </metadata>
   </info>
-  <desc></desc>
+  <desc/>
  </bookmark>
- <bookmark href="file:///home/svv/dvp/Python/logicheskaya_voronka">
-  <title>otchet-logicheskaya_voronka</title>
+ <bookmark href="file:///home/svv/dvp/Python/ucell_reports/sql">
+  <title>sql</title>
   <info>
    <metadata owner="http://freedesktop.org">
     <bookmark:icon name=""/>
    </metadata>
   </info>
-  <desc></desc>
  </bookmark>
 </xbel>
