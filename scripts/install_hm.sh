@@ -2,7 +2,7 @@
 
 check_deps() {
   if ! command -v nix &> /dev/null; then
-    echo "curl could not be found"
+    echo "nix could not be found"
     exit 1
   fi
 }
