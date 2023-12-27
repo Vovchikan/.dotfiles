@@ -20,7 +20,6 @@
   home.packages = [
     pkgs.htop
     pkgs.xclip
-    pkgs.keepassxc
     pkgs.screen
     pkgs.neofetch
 
