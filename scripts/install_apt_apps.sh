@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
 
-check_deps() {
+check_requirements() {
   if ! command -v apt &> /dev/null; then
     echo "apt could not be found"
     exit 1
   fi
 }
 
-install_openconnect() {
-  # with core plugin
+install() {
+  
+  # main apps
+  sudo apt install -y build-essential curl git gitk unzip
+
+  # openconnect with core plugin
   sudo apt install -y openconnect network-manager-openconnect
 
-  # plugin for gnome
-  #sudo apt install -y network-manager-openconnect
+  # For Phoenix framework
+  sudo apt install -y inotify-tools
+
+  # For asdf plugins
+  sudo apt install -y dirmngr gpg curl gawk
 }
 
-check_deps
-
-install_openconnect
+check_requirements
+install

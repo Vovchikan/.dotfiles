@@ -16,6 +16,8 @@ function main() {
   echo
   git submodule update --recursive --init
 
+  software
+
   echo
   read -r -p "Install langs? [y/N] " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
@@ -23,77 +25,39 @@ function main() {
     langs
   fi
 
-  $script_dir/configs.sh
-
-  echo
-  echo "+---------------------------------+"
-  echo "|   Download tmux plug manager    |"
-  echo "|       and all tmux plugins      |"
-  echo "+---------------------------------+"
-  echo
-  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
-      ~/.tmux/plugins/tpm/bin/install_plugins
-  fi
+  $script_dir/install_fonts.sh
 }
 
 function software() {
 
-  if [ -f "~/.bash_profile" ]; then
-    mv -v ~/.bash_profile ~/.bash_profile.backup
-  fi
-  cp -v $DPATH/templates/bash_profile.template ~/.bash_profile
-
   echo
   echo "+---------------------------------+"
-  echo "|        Installing curl git      |"
-  echo "|     build-essential coreutils   |"
+  echo "|        Installing apps          |"
+  echo "|            from apt             |"
   echo "+---------------------------------+"
   echo
-  sudo apt install -y build-essential curl git
+  $script_dir/install_apt_apps.sh
 
   echo
   echo "+---------------------------------+"
   echo "|        Installing nix           |"
   echo "+---------------------------------+"
   echo
-  sh <(curl -L https://nixos.org/nix/install) --daemon
-
-  echo
-  echo "+---------------------------------+"
-  echo "|   Installing nvim vim htop      |"
-  echo "|          neofetch stow          |"
-  echo "+---------------------------------+"
-  echo
-  nix-env -iA nixpkgs.neovim
-  nix-env -iA nixpkgs.vim
-  nix-env -iA nixpkgs.htop
-  nix-env -iA nixpkgs.stow
-  nix-env -iA nixpkgs.neofetch
+  $script_dir/install_nix.sh
 
   echo
   echo "+-------------------------------+"
   echo "|        Installing asdf        |"
   echo "+-------------------------------+"
   echo
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
-  echo -e "\n. \"$HOME/.asdf/asdf.sh\"" >> ~/.bash_profile
-  echo -e "\n. \"$HOME/.asdf/completions/asdf.bash\"" >> ~/.bash_profile
+  $script_dir/install_asfd.sh
 
   echo
   echo "+---------------------------------+"
   echo "|        Installing rclone        |"
   echo "+---------------------------------+"
   echo
-  # Installing rclone with ignoring all errors -> || true
-  curl https://rclone.org/install.sh | (sudo bash || true)
-
-  echo
-  echo "+---------------------------------+"
-  echo "|        Installing gitk          |"
-  echo "+---------------------------------+"
-  echo
-  sudo apt install gitk
+  $script_dir/install_rclone.sh
 
 }
 
@@ -104,9 +68,7 @@ function langs () {
   echo "|        Installing NodeJS        |"
   echo "+---------------------------------+"
   echo
-  asdf plugin-add nodejs
-  asdf install nodejs 16.13.0
-  asdf global nodejs 16.13.0
+  $script_dir/install_asdf_nodejs.sh
 
 
   echo
@@ -114,10 +76,7 @@ function langs () {
   echo "|        Installing Erlang        |"
   echo "+---------------------------------+"
   echo
-  sudo apt install -y build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libwxgtk-webview3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev openjdk-11-jdk
-  asdf plugin-add erlang
-  asdf install erlang 25.3.2.5
-  asdf global erlang 25.3.2.5
+  $script_dir/install_asdf_erlang.sh
 
 
   echo
@@ -125,18 +84,7 @@ function langs () {
   echo "|        Installing Elixir        |"
   echo "+---------------------------------+"
   echo
-  sudo apt install -y unzip
-  asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
-  asdf install elixir 1.14.1-otp-25
-  asdf global elixir 1.14.1-otp-25
-
-  # This need for Phoenix framework
-  echo
-  echo "+---------------------------------+"
-  echo "|      Installing inotify-tools   |"
-  echo "+---------------------------------+"
-  echo
-  sudo apt install inotify-tools
+  $script_dir/install_asdf_elixir.sh
 
 }
 

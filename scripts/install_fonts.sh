@@ -19,11 +19,3 @@ do
   cp -r "${font_dir}" ~/.local/share/fonts
 done
 fc-cache -fv # Update font cache
-
-echo
-echo "+---------------------------------+"
-echo "|      Linking config files       |"
-echo "+---------------------------------+"
-echo
-cd $DPATH
-stow -v tmux konsole vim vscode qbittorrent
