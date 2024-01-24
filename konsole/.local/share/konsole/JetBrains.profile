@@ -24,4 +24,5 @@ HistoryMode=1
 HistorySize=10000
 
 [Terminal Features]
+BlinkingCursorEnabled=true
 FlowControlEnabled=false
