@@ -6,7 +6,20 @@
     prefix = "C-q";
     terminal = "tmux-256color";
     historyLimit = 100000;
+    plugins = with pkgs;
+      [
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = ''
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+          '';
+        }
+      ];
     extraConfig = ''
+      set -g mouse on
+
       # Create windows and panes in same dir
       bind c new-window      -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
@@ -23,6 +36,12 @@
       bind-key p paste-buffe
       bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -se c -i"
 
+      bind-key -T copy-mode-vi 'C-h' select-pane -L
+      bind-key -T copy-mode-vi 'C-j' select-pane -D
+      bind-key -T copy-mode-vi 'C-k' select-pane -U
+      bind-key -T copy-mode-vi 'C-l' select-pane -R
+      bind-key -T copy-mode-vi 'C-\' select-pane -l
+      bind-key -T copy-mode-vi 'C-Space' select-pane -t:.+
     '';
   };
 }
