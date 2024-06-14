@@ -29,7 +29,6 @@
     "workbench.iconTheme": "vscode-icons",
     "editor.minimap.enabled": false,
     "editor.wordWrap": "on",
-    "workbench.colorTheme": "Night Owl",
     "vim.easymotion": true,
     "vim.incsearch": true,
     "vim.useSystemClipboard": true,
@@ -73,5 +72,8 @@
     "plpgsqlLanguageServer.port": 10432,
     "plpgsqlLanguageServer.database": "ucell_dev",
     "plpgsqlLanguageServer.defaultSchema": "ucell",
-    "plpgsqlLanguageServer.user": "ucell_dev"
+    "plpgsqlLanguageServer.user": "ucell_dev",
+    "update.mode": "none",
+    "extensions.autoCheckUpdates": false,
+    "workbench.colorTheme": "Elixir Theme No Italics Less Dark 2"
 }
