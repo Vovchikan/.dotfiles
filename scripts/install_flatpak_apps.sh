@@ -19,14 +19,21 @@ configure_flatpak() {
 
 }
 
-install_apps() {
+install_user_apps() {
   flatpak install --user flathub \
     com.getpostman.Postman \
     org.keepassxc.KeePassXC \
     org.qbittorrent.qBittorrent
 }
 
+install_user_apps() {
+  flatpak install --system flathub \
+    com.tomjwatson.Emote \
+    org.mozilla.Thunderbird
+}
+
 check_deps
 
 configure_flatpak
-install_apps
+install_user_apps
+install_system_apps
