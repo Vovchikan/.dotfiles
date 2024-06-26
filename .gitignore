@@ -5,6 +5,9 @@ Brewfile.lock.json
 kitty.conf.bak
 kitty.conf.swp
 
+# Kate
+*.kate-swp
+
 # vscode
 /vscode/.config/Code/*
 # don't ignore User dir
@@ -18,3 +21,9 @@ qbittorrent/.config/qBittorrent/rss/
 # Etc
 *.patch
 tme@*
+
+# PYTHON
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class

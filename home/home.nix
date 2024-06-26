@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "vbuser";
-  home.homeDirectory = "/home/vbuser";
+  home.username = "svv";
+  home.homeDirectory = "/home/svv";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -19,9 +19,10 @@
   # environment.
   home.packages = [
     pkgs.htop
-    pkgs.tmux
-    pkgs.neovim
-    pkgs.keepassxc
+    pkgs.xclip
+    pkgs.screen
+    pkgs.neofetch
+    pkgs.k6 # benchmark for API
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -59,12 +60,16 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/vbuser/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/svv/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     # EDITOR = "emacs";
   };
+
+  imports = lib.concatMap import [
+    ./programs
+  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -99,5 +104,4 @@
       };
     };
   };
-
 }

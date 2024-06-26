@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xbel>
 <xbel xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info" dbusName="konsole" xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" folded="no">
- <bookmark href="file:///home/svv/dvp/ucell">
+ <bookmark href="file:///home/svv/work/ucell">
   <title>ucell</title>
   <info>
    <metadata owner="http://freedesktop.org">
@@ -18,7 +18,7 @@
   </info>
   <desc/>
  </bookmark>
- <bookmark href="file:///home/svv/dvp/Python/ucell_reports">
+ <bookmark href="file:///home/svv/work/reports">
   <title>ucell reports</title>
   <info>
    <metadata owner="http://freedesktop.org">
@@ -27,7 +27,7 @@
   </info>
   <desc/>
  </bookmark>
- <bookmark href="file:///home/svv/dvp/Python/ucell_reports/sql">
+ <bookmark href="file:///home/svv/work/reports/sql">
   <title>sql</title>
   <info>
    <metadata owner="http://freedesktop.org">

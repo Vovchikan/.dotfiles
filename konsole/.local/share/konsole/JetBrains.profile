@@ -1,18 +1,16 @@
 [Appearance]
-ColorScheme=Otto
-Font=JetBrains Mono Medium,12,-1,5,57,0,0,0,0,0,Regular
+ColorScheme=Catppuccin-Frappe
+Font=JetBrains Mono Light,12,-1,5,25,0,0,0,0,0,Regular
 UseFontLineChararacters=true
 
 [Cursor Options]
 CursorShape=2
 
 [General]
-Command=/bin/bash --login
-Environment=TERM=xterm-256color,COLORTERM=truecolor
 Name=JetBrains
 Parent=FALLBACK/
-TerminalColumns=100
-TerminalRows=30
+TerminalColumns=120
+TerminalRows=36
 
 [Interaction Options]
 AutoCopySelectedText=true

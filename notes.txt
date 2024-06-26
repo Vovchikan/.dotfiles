@@ -1,0 +1,20 @@
+Dep packets for installation:
+- Obsidian
+- VS_Code (need profile, settings)
+-
+
+Mistakes\Warnings when installing Erlang:
+- Probe failed for libncurses5-dev (distro: ubuntu)
+- Using OpenSSL 3.0 is not yet recommended for production code
+
+Docker:
+- Installationg ok, but can't run Docker Desktop after installation (try to understand, what happened)
+
+Ideas:
+- Move all install_asdf_*.sh scripts to install_asdf.sh (run them with `install_asdf.sh --langs`)
+- add script for deleting snap Firefox and installing normal Firefox
+
+THINK, how I can transfer settings for this Apps:
+- Firefox
+- KeepassXC
+- KeepassXC
