@@ -100,7 +100,7 @@
         enabled = true;
       };
       pull = {
-        rebase = false;
+        rebase = true;
       };
     };
   };
