@@ -1,0 +1,41 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    // Version of this setting.
+    "version": "2",
+    // Whether the agent is enabled.
+    "enabled": false,
+    "single_file_review": false
+  },
+  "toolbar": {
+    // Whether to show breadcrumbs.
+    "breadcrumbs": true,
+    // Whether to show quick action buttons.
+    "quick_actions": true,
+    // Whether to show the Selections menu in the editor toolbar.
+    "selections_menu": true,
+    // Whether to show agent review buttons in the editor toolbar.
+    "agent_review": false
+  },
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "autosave": "on_window_change",
+  "format_on_save": "off",
+  "show_whitespaces": "selection",
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  }
+}

@@ -1,37 +1,35 @@
 # dotfiles
 
-## Nix & Home Manager
+## Использования configure_scripts
 
-### Установка пакетного менеджера Nix для текущего пользователя
-
+### Создание символической ссылки
 ```shell
-.dotfiles/scripts/install_nix.sh
+$ python3
+>>> from configure_scripts.my_utils import link_path
+>>> import os
+>>>
+>>> src = os.path.expanduser("~/.dotfiles/zed/keymap.json")
+>>> target_folder = os.path.expanduser("~/.config/zed")
+>>> backup_dir = os.path.expanduser("~/.backup")
+>>>
+>>> link_path(src, target_folder, backup_dir)
+
+    Make symbolic link for keymap.json
+    in /home/svv/.config/zed
+
+Move to backup -  /home/svv/.backup/keymap.json.backup
 ```
+`link_path` принимает только абсолютные пути, поэтому приходится преобразовывать
+каждый путь с помощью `os.path.expanduser`.
 
-### Установка Home Manager
+---
+## Примеры конфигов
 
-- [Оф гайд](https://nix-community.github.io/home-manager/index.xhtml#ch-installation)
-- [Оф Readme](https://github.com/nix-community/home-manager?tab=readme-ov-file)
-```shell
-nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
-nix-channel --update
-nix-shell '<home-manager>' -A install
-```
-
-### После установки **Nix** и **Home Manager**:
-
-!!! Обязательно поменяй home.stateVersion в `.dotfiles/home/home.nix` перед линковкой
-```
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-```
-
-```shell
-$ ~/.dotfiles/scripts/links.py
-$ home-manager switch
-```
-
-### Neovim config
+### Neovim
 [Example](https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca)
 
-### Tmux config
-[Example](https://haseebmajid.dev/posts/2023-07-10-setting-up-tmux-with-nix-home-manager/)
+### Tmux
+[Readme](tmux/README.md)
+
+### Zed
+[Example](https://gist.github.com/kofta999/77fe78491830da3c7e252ceb2857e37c)
