@@ -22,7 +22,7 @@ install() {
   sudo apt install -y dirmngr gpg curl gawk
 
   # Flatpak
-  sudo apt install -y flatpak plasma-discover-backend-flatpak
+  sudo apt install -y flatpak
 
   # Docker
   sudo apt install -y gnome-terminal
