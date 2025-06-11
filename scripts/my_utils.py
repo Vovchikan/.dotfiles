@@ -4,7 +4,7 @@ import sys
 import logging
 import inspect
 
-def get_script_dir(follow_symlinks=True):
+def get_script_dir(follow_symlinks: bool = True):
   if getattr(sys, 'frozen', False): # py2exe, PyInstaller, cx_Freeze
     path = os.path.abspath(sys.executable)
   else:

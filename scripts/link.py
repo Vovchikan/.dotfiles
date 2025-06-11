@@ -19,7 +19,7 @@ dir = os.path.dirname(__file__)
 home_nix = abspath(path.join(dir, "../home/home.nix"))
 td = path.expandvars('$HOME/.config/home-manager')
 
-def link_path(src: str, target_folder: str, backup_dir='/tmp'):
+def link_path(src: str, target_folder: str, backup_dir: str = '/tmp'):
   """
   Create symbol link in target directory.
   Create backup for file/directory with same name as src.
