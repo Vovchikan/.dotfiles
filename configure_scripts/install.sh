@@ -19,13 +19,6 @@ function main() {
   $script_dir/configure_gitka.sh
   # $script_dir/create_dirs.sh
 
-  echo
-  echo "+---------------------------------+"
-  echo "|       Download submodules       |"
-  echo "+---------------------------------+"
-  echo
-  git submodule update --recursive --init
-
   software
 
   echo
@@ -51,6 +44,13 @@ function main() {
 }
 
 function software() {
+
+  echo
+  read -r -p "Install snap apps? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+      sudo snap install tldr
+  fi
 
   echo
   read -r -p "Install asdf? [y/N] " response

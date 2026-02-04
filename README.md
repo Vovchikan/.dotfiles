@@ -1,8 +1,21 @@
 # dotfiles
 
-## Использования configure_scripts
+## 📥️ Установка
+```shell
+git submodule update --init --recursive # если есть доступ
+make first-init
+```
+[Подробнее](scripts/README.md)
 
-### Создание символической ссылки
+## ⚙️ Настройка
+```shell
+cd configure_scripts
+./install.sh
+```
+
+### Примеры использования configure_scripts
+
+#### Создание символической ссылки
 ```shell
 $ python3
 >>> from configure_scripts.my_utils import link_path
@@ -23,13 +36,25 @@ Move to backup -  /home/svv/.backup/keymap.json.backup
 каждый путь с помощью `os.path.expanduser`.
 
 ---
-## Примеры конфигов
 
-### Neovim
+## 💡 Справка
+
+## Команды Makefile
+
+| Команда           | Описание                                                                                     |
+|-------------------|----------------------------------------------------------------------------------------------|
+| `make venv`       | Создаёт Python venv в папке `./venv` и устанавливает зависимости из `config/requirements.txt` |
+| `make requirements` | Обновляет `config/requirements.txt` на основе текущего окружения                           |
+| `make setup-env`  | Запускает скрипт `config/setup_env.py`, который создаёт/обновляет файл `~/.my_scripts.conf`   |
+| `make insert-aliases` | Добавляет алиасы из `.bash_aliases` и `current/.bash_aliases` в `~/.bashrc`               |
+
+### Примеры конфигов
+
+#### Neovim
 [Example](https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca)
 
-### Tmux
+#### Tmux
 [Readme](tmux/README.md)
 
-### Zed
+#### Zed
 [Example](https://gist.github.com/kofta999/77fe78491830da3c7e252ceb2857e37c)
