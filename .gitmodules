@@ -1,3 +1,6 @@
 [submodule "kitty/.config/kitty/themes/catppuccin"]
 	path = kitty/.config/kitty/themes/catppuccin
 	url = https://github.com/catppuccin/kitty
+[submodule "work-scripts"]
+	path = work-scripts
+	url = git@github.com:Vovchikan/work-scripts.git
