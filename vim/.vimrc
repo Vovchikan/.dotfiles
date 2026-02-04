@@ -38,7 +38,7 @@ set wildmode=list:longest " Make wildmenu behave like similar to Bash completion
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " change colorscheme
-colorscheme wombat256grf  
+colorscheme wombat256grf
 
 
 " CONFIGURE KEYBINDINGS
