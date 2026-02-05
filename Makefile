@@ -14,6 +14,9 @@ venv/touchfile: config/requirements.txt
 requirements:
 	. venv/bin/activate; pip freeze > config/requirements.txt
 
+update-aliases: setup-env insert-aliases
+	. ~/.bashrc
+
 # Создание файла ~/.my_scripts.conf
 setup-env:
 	config/setup_env.py
@@ -21,3 +24,6 @@ setup-env:
 # Добавление баш алиасов
 insert-aliases:
 	config/insert_aliases.py -s scripts/bash_aliases
+	if [ -f work-scripts/funbox/bash_aliases ]; then \
+		config/insert_aliases.py -s work-scripts/funbox/bash_aliases; \
+	fi
