@@ -24,7 +24,11 @@ git config --global alias.taglog \
 "!git for-each-ref --sort=committerdate \
   --format='%(refname:short)|%(objectname:short)|%(committerdate:short)|%(subject)' refs/tags \
   | column -t -s '|' \
-  | sed -E \"s/^([^ ]+)/$(tput setaf 3)&$(tput sgr0)/; s/([0-9a-f]{7,10})/$(tput setaf 2)&$(tput sgr0)/; s/([0-9]{4}-[0-9]{2}-[0-9]{2})/$(tput setaf 4)&$(tput sgr0)/\""
+  | if [ -t 1 ]; then \
+      sed -E \"s/^([^ ]+)/$(tput setaf 3)&$(tput sgr0)/; s/([0-9a-f]{7,10})/$(tput setaf 2)&$(tput sgr0)/; s/([0-9]{4}-[0-9]{2}-[0-9]{2})/$(tput setaf 4)&$(tput sgr0)/\"; \
+    else \
+      cat; \
+    fi"
 
 
 git config --list --global
