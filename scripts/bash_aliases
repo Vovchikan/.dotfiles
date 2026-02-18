@@ -13,6 +13,7 @@ alias gitfdates="$MYSCRIPTS/git_file_dates.py"
 alias myscripts-env='source ~/.my_scripts.conf'
 alias ecrontabvim='VISUAL=vim crontab -e'
 alias ecrontabnvim='VISUAL=nvim crontab -e'
+alias mc='LANG=en_EN.UTF-8 mc'
 alias update-list='sudo apt update && apt list --upgradable'
 alias backupf='f() { cp -fv --backup=numbered "$1" "$1"; }; f'
 alias clipf='f() { cat "$1" | xclip -sel clip; }; f'

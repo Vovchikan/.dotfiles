@@ -12,7 +12,8 @@ install() {
   # main apps
   sudo apt install -y build-essential curl git gitk \
     unzip screen htop xclip imagemagick \
-    ca-certificates openssh-server
+    ca-certificates openssh-server \
+    mc p7zip-full catdoc unrar antiword mplayer
 
   # configure ssh
   sudo apt install -y openssh-server

@@ -14,3 +14,10 @@ mkdir -pv ~/Downloads/Vivaldi
 mkdir -pv ~/Downloads/Chromium
 
 mkdir -pv ~/Documents/keepassxc
+
+# /mnt/data
+ln -s --target-directory=~ /mnt/data/mnt/data ntfs-data
+ln -s --target-directory=~ /mnt/data/Media/Videos
+# /mnt/multihome-data
+ln -s --target-directory=~ /mnt/multihome-data
+ln -s --target-directory=~ /mnt/multihome-data/repos/dotfiles
