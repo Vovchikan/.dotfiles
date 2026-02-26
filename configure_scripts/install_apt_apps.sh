@@ -15,6 +15,9 @@ install() {
     ca-certificates openssh-server \
     mc p7zip-full catdoc unrar antiword mplayer
 
+  # drivers for harware decoding on amd video card
+  sudo apt install -y va-driver-all
+
   # configure ssh
   sudo apt install -y openssh-server
   # configure ssh connections in double commander?
