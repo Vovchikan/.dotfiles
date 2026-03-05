@@ -16,7 +16,7 @@ function main() {
 
   $script_dir/install_apt_apps.sh
   $script_dir/configure_git.sh
-  $script_dir/configure_gitka.sh
+  $script_dir/configure_gitk.sh
   # $script_dir/create_dirs.sh
 
   software

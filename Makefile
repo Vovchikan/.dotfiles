@@ -1,6 +1,6 @@
 
 # Install
-first-init: venv setup-env insert_aliases
+first-init: venv setup-env insert-aliases
 	. ~/.bashrc
 
 # Настройка окружения для Python скриптов

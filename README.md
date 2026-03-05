@@ -5,7 +5,12 @@
 git submodule update --init --recursive # если есть доступ
 make first-init
 ```
-[Подробнее](scripts/README.md)
+> Нужно доработать, так как на свежей системе не доступны команды git и make.
+> Так же для работы питона мне нужно было установить `apt install python3.12-venv`
+> Ещё нужно добавить упоминание, что нужно удалить папку `venv`, если `dotfiles`
+> были скопированы на новую систему.
+
+[Подробнее про алиасы](scripts/README.md)
 
 ## ⚙️ Настройка
 ```shell
@@ -58,3 +63,11 @@ Move to backup -  /home/svv/.backup/keymap.json.backup
 
 #### Zed
 [Example](https://gist.github.com/kofta999/77fe78491830da3c7e252ceb2857e37c)
+
+## 📋 TODO
+
+- [ ] Добавить настройку `sudo update-alternatives --config editor`
+- [ ] Добавить скрипт для линковки конфигов. Пример можно взять из `./vim/link.sh`
+- [ ] Перейти с `make` на `just`?
+- [ ] Добавить конфигурацию для mc
+- [ ] Вернуть конфигурацию для konsole?

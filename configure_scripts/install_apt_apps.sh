@@ -36,7 +36,7 @@ install() {
   # sudo apt install -y flatpak
 
   # Docker
-  sudo apt install -y gnome-terminal
+  sudo apt install -y gnome-terminal pass
 
   # Razer Daemon - https://openrazer.github.io/#download
   sudo apt install openrazer-meta
