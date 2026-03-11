@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+
+import argparse
+
+VERSION = "0.1"
+
+parser = argparse.ArgumentParser(description="Script description")
+parser.add_argument("-v", "--version", action="version", version=VERSION)
+
+args = parser.parse_args()
