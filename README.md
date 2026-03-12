@@ -1,73 +1,82 @@
 # dotfiles
 
-## 📥️ Установка
+Мои настройки и скрипты для чистой системы.
+
+---
+## Подготовка
+
+### Скачивание репозитория
+
 ```shell
+git clone https://github.com/Vovchikan/.dotfiles.git
+cd .dotfiles
 git submodule update --init --recursive # если есть доступ
-make first-init
 ```
-> Нужно доработать, так как на свежей системе не доступны команды git и make.
-> Так же для работы питона мне нужно было установить `apt install python3.12-venv`
-> Ещё нужно добавить упоминание, что нужно удалить папку `venv`, если `dotfiles`
-> были скопированы на новую систему.
 
-[Подробнее про алиасы](scripts/README.md)
+### Установка Зависимостей
 
-## ⚙️ Настройка
 ```shell
-cd configure_scripts
-./install.sh
+sudo apt install -y "python3.*-venv" build-essential
+snap install --edge --classic just
+just venv
+just setup-env
+just insert-aliases
 ```
 
-### Примеры использования configure_scripts
-
-#### Создание символической ссылки
-```shell
-$ python3
->>> from configure_scripts.my_utils import link_path
->>> import os
->>>
->>> src = os.path.expanduser("~/.dotfiles/zed/keymap.json")
->>> target_folder = os.path.expanduser("~/.config/zed")
->>> backup_dir = os.path.expanduser("~/.backup")
->>>
->>> link_path(src, target_folder, backup_dir)
-
-    Make symbolic link for keymap.json
-    in /home/svv/.config/zed
-
-Move to backup -  /home/svv/.backup/keymap.json.backup
-```
-`link_path` принимает только абсолютные пути, поэтому приходится преобразовывать
-каждый путь с помощью `os.path.expanduser`.
+> [!TIP]
+> Более подробная информация о командах just: `just` или `just --list`.
 
 ---
 
-## 💡 Справка
+## Использование
 
-## Команды Makefile
+### Установка приложений
 
-| Команда           | Описание                                                                                     |
-|-------------------|----------------------------------------------------------------------------------------------|
-| `make venv`       | Создаёт Python venv в папке `./venv` и устанавливает зависимости из `config/requirements.txt` |
-| `make requirements` | Обновляет `config/requirements.txt` на основе текущего окружения                           |
-| `make setup-env`  | Запускает скрипт `config/setup_env.py`, который создаёт/обновляет файл `~/.my_scripts.conf`   |
-| `make insert-aliases` | Добавляет алиасы из `.bash_aliases` и `current/.bash_aliases` в `~/.bashrc`               |
+```shell
+./install_scripts/main.sh
+```
+
+### Настройка приложений
+
+```shell
+./configure_scripts/main.sh
+```
+
+### Папка scripts
+
+Содержит полезные скрипты и готовые алиасы.
+
+Команда `make first-init` добавляет переменную `$MYSCRIPTS`, в которой записан путь к этой папке. Через эту переменную можно вызывать скрипты из этой папки:
+
+```shell
+$MYSCRIPTS/create-755.sh --help
+```
+
+Подобнее - [тут](scripts/README.md).
+
+### Папка configure_scripts
+
+Подобнее - [тут](configure_scripts/README.md).
+
+### Команды Makefile
+
+| Команда               | Описание                                                                                      |
+| --------------------- | --------------------------------------------------------------------------------------------- |
+| `make venv`           | Создаёт Python venv в папке `./venv` и устанавливает зависимости из `config/requirements.txt` |
+| `make requirements`   | Обновляет `config/requirements.txt` на основе текущего окружения                              |
 
 ### Примеры конфигов
 
 #### Neovim
+
 [Example](https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca)
 
 #### Tmux
+
 [Readme](tmux/README.md)
 
 #### Zed
+
 [Example](https://gist.github.com/kofta999/77fe78491830da3c7e252ceb2857e37c)
 
-## 📋 TODO
-
-- [ ] Добавить настройку `sudo update-alternatives --config editor`
-- [ ] Добавить скрипт для линковки конфигов. Пример можно взять из `./vim/link.sh`
-- [ ] Перейти с `make` на `just`?
-- [ ] Добавить конфигурацию для mc
-- [ ] Вернуть конфигурацию для konsole?
+## 📋 [TODO](./TODO.md)

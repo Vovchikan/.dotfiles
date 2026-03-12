@@ -1,9 +1,25 @@
 #!/usr/bin/env bash
 
-create-gpg-if-not-exists() {
+# create copy of file in the same directory
+# copy will have the same name with "~N~" at the end
+# where N - is number of copy
+backup_file() {
+  cp -f --backup=numbered "$1" "$1"
+}
+
+# change default home directories to English
+rename_dirs() {
+  backup_file ~/.config/user-dirs.dirs
+  backup_file ~/.config/user-dirs.locale
+  LC_ALL=C.UTF-8 xdg-user-dirs-update --force
+}
+
+# Get key or create new if not exists
+# the result will be in GPG_KEY_ID
+get-gpg-lazy() {
   if [ $# -lt 2 ]; then
     echo "Ошибка: требуется указать имя и email"
-    echo "Использование: create-gpg-if-not-exists <имя> <email>"
+    echo "Использование: get-gpg-lazy <имя> <email>"
     return 1
   fi
 
@@ -44,12 +60,63 @@ create-gpg-if-not-exists() {
       return 1
     fi
 
-    echo "GPG-ключ успешно создан с ID:"
-    echo "$GPG_KEY_ID"
+    echo "GPG-ключ успешно создан с ID: $GPG_KEY_ID"
     return 0
   else
-    echo "Найден существующий GPG-ключ для $USER_STRING с ID:"
-    echo "$GPG_KEY_ID"
+    echo "Найден существующий GPG-ключ для $USER_STRING с ID: $GPG_KEY_ID"
     return 0
   fi
+}
+
+# Usage: check_dependencies "gpg" "curl" "pass" "pkg:gnupg" "pkg:libstdc++6"
+check_dependencies() {
+  local missing=()
+  local script_name=$(basename "$0")
+  local cmd_deps=()
+  local pkg_deps=()
+
+  for dep in "$@"; do
+    if [[ "$dep" == pkg:* ]]; then
+      pkg_deps+=("${dep#pkg:}")
+    else
+      # Это команда
+      cmd_deps+=("$dep")
+    fi
+  done
+
+  for app in "${cmd_deps[@]}"; do
+    if ! command -v "$app" &> /dev/null; then
+      missing+=("$app (command)")
+    fi
+  done
+
+  for pkg in "${pkg_deps[@]}"; do
+    if ! dpkg -s "$pkg" &> /dev/null; then
+      missing+=("$pkg (package)")
+    fi
+  done
+
+  if [ ${#missing[@]} -ne 0 ]; then
+    echo "❌ Script '$script_name' is missing dependencies:"
+    printf '  - %s\n' "${missing[@]}"
+    echo
+    echo "Please install missing dependencies and try again."
+    exit 1
+  fi
+}
+
+# Usage: check_ubuntu_version "24.04" "25.10"
+check_ubuntu_version() {
+  local allowed_versions=("$@")
+
+  [ -f /etc/os-release ] || return 1
+  . /etc/os-release
+
+  [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]] || return 1
+
+  for version in "${allowed_versions[@]}"; do
+    [[ "$VERSION_ID" == "$version" ]] && return 0
+  done
+
+  return 1
 }

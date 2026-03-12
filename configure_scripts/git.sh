@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+set -Eeuo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
+source "$SCRIPT_DIR/../scripts/utils.sh"
+
+check_dependencies git
+
 git config --global user.name "Vladimir Samorodov"
 git config --global user.email vovchikan@gmail.com
 git config --global core.editor vim

@@ -60,6 +60,9 @@ else
   case "$EXT" in
     sh)
       echo "#!/usr/bin/env bash" > "$FILE_NAME"
+      echo "" >> "$FILE_NAME"
+      echo "set -Eeuo pipefail" >> "$FILE_NAME"
+      echo 'source "$MYSCRIPTS/utils.sh"' >> "$FILE_NAME"
       ;;
     py)
       echo "#!/usr/bin/env python3" > "$FILE_NAME"

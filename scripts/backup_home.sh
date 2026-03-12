@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
+TAR_NAME="home_backup_$(date +%F).tar.gz"
+
 # -C ~ - переход в домашнюю директории перед созданием бэкапа
-tar -cvpzf backup.tar.gz -C ~ \
+tar -cvpzf $TAR_NAME -C ~ \
   --exclude=".docker" \
   --exclude="Downloads" \
+  --exclude="Videos" \
+  --exclude="$TAR_NAME" \
+  --exclude="backups" \
   .
 # Проверка путей в архиве
 # tar -tzvf backup.tar.gz
