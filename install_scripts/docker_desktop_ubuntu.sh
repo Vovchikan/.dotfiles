@@ -2,68 +2,49 @@
 
 # https://docs.docker.com/desktop/install/ubuntu/
 
+if command -v docker &> /dev/null; then
+  echo "✅ docker already installed"
+  exit 0
+fi
+
+echo
+read -r -p "Install docker for Ubuntu? [y/N] " response
+if [[ ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  exit 0
+fi
+
+deps=(
+  "apt"
+  "gpg"
+  "curl"
+  "pass"
+  "gnome-terminal"
+  "pkg:gnupg"
+  "pkg:libstdc++6"
+  "pkg:ca-certificates"
+)
+
 set -Eeuo pipefail
 
-check_deps() {
-  for app in apt curl gnome-terminal; do
-    if ! command -v $app &> /dev/null; then
-      echo "${app} could not be found"
-      exit 1
-    fi
-  done
+NAME="Vladimir"
+EMAIL="vovchikan@gmail.com"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
+source "$SCRIPT_DIR/../scripts/utils.sh"
 
-  for app in ca-certificates gnupg; do
-    if ! dpkg -s $app &> /dev/null; then
-      echo "${app} package not installed"
-      exit 1
-    fi
-  done
-
-  if command -v docker &> /dev/null; then
-    echo "docker already installed"
-    exit 0
-  fi
-}
+check_dependencies "${deps[@]}"
 
 # https://docs.docker.com/desktop/setup/sign-in/
 # https://www.passwordstore.org/
 setup_docker_pass() {
-  if ! command -v pass &> /dev/null; then
-    echo "pass could not be found"
-    exit 0
-  fi
-
-  # 1. Проверка, инициализировано ли уже хранилище pass
   if [ -d "$HOME/.password-store" ] && [ -f "$HOME/.password-store/.gpg-id" ]; then
     echo "Хранилище 'pass' уже инициализировано. Выход."
     return 0
   fi
 
-  # 2. Проверка наличия GPG-ключа
-  echo "Проверка наличия GPG-ключа..."
-  GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG 2>/dev/null | grep -A1 "sec" | tail -1 | awk '{print $1}' | cut -d'/' -f2)
+  # the result will be in GPG_KEY_ID
+  get-gpg-lazy "$NAME" "$EMAIL"
 
-  if [ -z "$GPG_KEY_ID" ]; then
-    echo "GPG-ключ не найден. Будет создан новый."
-    # 3. Генерация нового GPG-ключа (интерактивно)
-    # Используйте --batch для автоматизации, но здесь для примера — интерактивный режим
-    if ! command -v gpg &> /dev/null; then
-      echo "Ошибка: 'gpg' не установлен. Установите пакет gnupg."
-      return 1
-    fi
-    gpg --full-generate-key
-    # Повторная попытка получения ID после создания
-    GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG 2>/dev/null | grep -A1 "sec" | tail -1 | awk '{print $1}' | cut -d'/' -f2)
-    if [ -z "$GPG_KEY_ID" ]; then
-      echo "Не удалось получить ID GPG-ключа. Проверьте процесс генерации."
-      return 1
-    fi
-  else
-    echo "Найден существующий GPG-ключ с ID: $GPG_KEY_ID"
-  fi
-
-  # 4. Инициализация pass с использованием GPG ID
-  echo "Инициализация хранилища 'pass' с ключом $GPG_KEY_ID..."
+  # write gpg-key to ~/.password-store/.gpg-id
   pass init "$GPG_KEY_ID"
 
   if [ $? -eq 0 ]; then

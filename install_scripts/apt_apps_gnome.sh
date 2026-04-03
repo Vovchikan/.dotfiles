@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-check_requirements() {
-  if ! command -v apt &> /dev/null; then
-    echo "apt could not be found"
-    exit 1
-  fi
-}
+
+source "$MYSCRIPTS/utils.sh"
+
+check_dependencies apt
 
 install() {
 
@@ -23,5 +21,4 @@ install() {
   # gir1.2-gtop-2.0 lm-sensors нужны для Vitals
 }
 
-check_requirements
 install

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+VERSION="0.1"
+
+usage() {
+  echo "Usage: $0 [options]"
+  echo
+  echo "Options:"
+  echo "  -h, --help       Show help"
+  echo "  -v, --version    Show version"
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -v|--version)
+      echo "$VERSION"
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1"
+      usage
+      exit 1
+      ;;
+  esac
+done

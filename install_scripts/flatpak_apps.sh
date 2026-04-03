@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-check_deps() {
-  if ! command -v flatpak &> /dev/null; then
-    echo "flatpak could not be found"
-    exit 1
-  fi
-}
+source "$MYSCRIPTS/utils.sh"
 
+check_dependencies flatpak
 
 configure_flatpak() {
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

@@ -4,8 +4,8 @@ import argparse
 from typing import Dict
 
 DEFAULT_CONFIG: Dict[str, str] = {
-    "MYSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../scripts")),
-    "WORKSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../work-scripts"))
+    "export MYSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../scripts")),
+    "export WORKSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../work-scripts"))
 }
 
 TARGET_CONF: str = os.path.expanduser("~/.my_scripts.conf")
@@ -52,7 +52,7 @@ def main() -> None:
   parser.add_argument(
       "vars",
       nargs="*",
-      help="Переменные в формате KEY=VALUE. Перезаписывают все предыдущие значения.")
+      help='Переменные в формате KEY=VALUE или "export KEY=VALUE". Перезаписывают все предыдущие значения.')
   args: argparse.Namespace = parser.parse_args()
 
   config: Dict[str, str] = DEFAULT_CONFIG.copy()
@@ -63,7 +63,7 @@ def main() -> None:
 
   for item in args.vars:
     if "=" not in item:
-      print(f"Неверный формат: {item}, ожидается KEY=VALUE")
+      print(f'Неверный формат: {item}, ожидается "export KEY=VALUE" или "KEY=VALUE"')
       continue
     key, val = item.split("=", 1)
     config[key] = os.path.expanduser(val)
