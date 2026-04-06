@@ -22,8 +22,10 @@ configure:
 
 # Create sym-links in ~/.config
 link-configurations:
-  ./vim/link.sh
-  ./tmux/link.sh
+  - ./vim/link.sh
+  - ./tmux/link.sh
+  - ./mc/link.sh
+  - ./konsole/link.sh
 
 # Create python venv
 venv:

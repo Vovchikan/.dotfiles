@@ -3,5 +3,5 @@
 set -Eeuo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
 
-ln -s --target-directory=$HOME $SCRIPT_DIR/.vim
-ln -s --target-directory=$HOME $SCRIPT_DIR/.vimrc
+ln -vs --target-directory=$HOME $SCRIPT_DIR/.vim
+ln -vs --target-directory=$HOME $SCRIPT_DIR/.vimrc

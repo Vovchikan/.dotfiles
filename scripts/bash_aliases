@@ -6,6 +6,15 @@ alias dropbox-on='rclone mount --daemon dbx: ~/dbx'
 alias dropbox-off='fusermount -u ~/dbx'
 
 # git
+## hide changes in indexed files (only for local use)
+alias git-hide='git update-index --skip-worktree'
+alias git-unhide='git update-index --no-skip-worktree'
+alias git-hidden='git ls-files -v | grep "^S"'
+## ignore changes in indexed files (only for local use)
+alias git-assume='git update-index --assume-unchanged'
+alias git-unassume='git update-index --no-assume-unchanged'
+alias git-assumed='git ls-files -v | grep "^h"'
+## else
 alias gitka='gitk --all &'
 alias gitfdates="$MYSCRIPTS/git_file_dates.py"
 
