@@ -7,6 +7,8 @@ source "$DPATH/scripts/utils.sh"
 set -Eeuo pipefail
 
 function main() {
+  apt_update
+
   $SCRIPT_DIR/apt_apps.sh
   $SCRIPT_DIR/asdf.sh
   $SCRIPT_DIR/yt-dlp.sh
@@ -46,6 +48,12 @@ function software() {
     sudo apt install -y qemu-kvm bridge-utils virt-manager
   fi
 
+  echo
+  read -r -p "Install codecs? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+    sudo apt install ubuntu-restricted-extras
+  fi
 }
 
 main

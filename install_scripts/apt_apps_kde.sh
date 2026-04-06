@@ -8,7 +8,8 @@ install() {
 
   # Flatpak
   if command -v flatpak &> /dev/null; then
-    sudo apt plasma-discover-backend-flatpak
+    sudo apt plasma-discover-backend-flatpak \
+      pavucontrol
   fi
 }
 

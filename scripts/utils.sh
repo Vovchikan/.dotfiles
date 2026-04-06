@@ -1,5 +1,31 @@
 #!/usr/bin/env bash
 
+apt_update() {
+  UPDATE_CACHE="/tmp/apt_updates_cache"
+  CURRENT_TIME=$(date +%s)
+
+  if [ -f "$UPDATE_CACHE" ] && [ $(($CURRENT_TIME - $(stat -c %Y "$UPDATE_CACHE"))) -lt 3600 ]; then
+    UPDATES=$(cat "$UPDATE_CACHE")
+  else
+    echo "Executing (sudo apt update)..."
+    sudo apt update -o Acquire::http::Timeout=5 -o Acquire::ftp::Timeout=5 > /dev/null 2>&1
+    UPDATES=$(apt list --upgradable 2>/dev/null | grep -v "Listing...")
+    echo "$UPDATES" > "$UPDATE_CACHE"
+  fi
+
+  if [ -z "$UPDATES" ]; then
+    echo "No updates"
+  else
+    echo "$UPDATES"
+    echo
+    read -r -p "Execute apt upgrade? [y/N] " response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+      sudo apt upgrade -y
+      rm -f "$UPDATE_CACHE"
+    fi
+  fi
+}
+
 # create copy of file in the same directory
 # copy will have the same name with "~N~" at the end
 # where N - is number of copy

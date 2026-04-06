@@ -2,7 +2,7 @@
 
 # List just-commands
 default:
-  just --list
+  @just --list --unsorted --justfile {{justfile()}}
 
 # Install apps and nesseccery libraries
 install:
@@ -19,31 +19,30 @@ install-vscode-ext:
 # Configure apps
 configure:
   ./configure_scripts/main.sh
+
+# Create sym-links in ~/.config
+link-configurations:
   ./vim/link.sh
   ./tmux/link.sh
 
-# (Not tested!) Change default home directories to English
-rename-home-dirs:
-  #!/usr/bin/env bash
-  . ./scripts/utils.sh
-  rename_dirs
 # Create python venv
 venv:
   make venv
-
-# Update bash aliases in current shell from "bash_alises" files
-update-aliases: setup-env insert-aliases
-  #!/usr/bin/env bash
-  . ~/.bashrc
 
 # Create ~/.my_scripts.conf
 setup-env:
   config/setup_env.py
 
-# Add bash aliases
+# Add bash aliases to .bashrc
 insert-aliases:
   config/insert_aliases.py -s scripts/bash_aliases
   #!/usr/bin/env bash
   if [ -f work-scripts/funbox/bash_aliases ]; then \
     config/insert_aliases.py -s work-scripts/funbox/bash_aliases; \
   fi
+
+# (Not tested!) Change default home directories to English
+rename-home-dirs:
+  #!/usr/bin/env bash
+  . ./scripts/utils.sh
+  rename_dirs

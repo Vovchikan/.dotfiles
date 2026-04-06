@@ -8,8 +8,8 @@ check_dependencies apt
 install() {
 
   # openconnect with core plugin
-  sudo apt install -y network-manager-openconnect-gnome \
-    gnome-tweaks ubuntu-restricted-extras \
+  sudo apt install -y gnome-tweaks \
+    network-manager-openconnect-gnome \
     gnome-shell-extension-manager \
     gir1.2-gtop-2.0 lm-sensors
 
