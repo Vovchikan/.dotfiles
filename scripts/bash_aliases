@@ -27,6 +27,9 @@ alias list-size='du -h --max-depth=1 ./ | sort -hr'
 # показывает диски в режиме "только для чтения"
 alias ro-show='grep "[[:space:]]ro[[:space:],]" /proc/mounts'
 
+# linux hardware info
+alias inxi-gpu='inxi -Gxz'
+
 # other
 alias myscripts-env='source ~/.my_scripts.conf'
 alias ecrontabvim='VISUAL=vim crontab -e'

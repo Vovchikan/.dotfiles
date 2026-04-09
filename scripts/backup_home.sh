@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-TAR_NAME="home_backup_$(date +%F).tar.gz"
+TAR_NAME="backup_home_$(date +%F).tar.gz"
 
 # -C ~ - переход в домашнюю директории перед созданием бэкапа
 tar -cvpzf $TAR_NAME -C ~ \
@@ -9,6 +9,8 @@ tar -cvpzf $TAR_NAME -C ~ \
   --exclude="Videos" \
   --exclude="$TAR_NAME" \
   --exclude="backups" \
+  --exclude="snap" \
+  --exclude=".cache" \
   .
 # Проверка путей в архиве
 # tar -tzvf backup.tar.gz

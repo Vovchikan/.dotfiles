@@ -42,6 +42,8 @@ insert-aliases:
   if [ -f work-scripts/funbox/bash_aliases ]; then \
     config/insert_aliases.py -s work-scripts/funbox/bash_aliases; \
   fi
+  mkdir -p ~/.local/share/bash-completion/completions
+  @just --completions bash > ~/.local/share/bash-completion/completions/just
 
 # Change default home directories to English
 rename-home-dirs:
