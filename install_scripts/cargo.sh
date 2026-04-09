@@ -48,8 +48,28 @@ ask_install_just-lsp() {
   cargo install just-lsp
 }
 
+# https://docs.deno.com/runtime/getting_started/installation/
+ask_install_deno() {
+  # Need for https://github.com/yt-dlp/yt-dlp/wiki/EJS
+  if command -v deno &> /dev/null; then
+    echo "✅ deno already installed"
+    deno --version
+    return 0
+  fi
+
+  echo
+  read -r -p "Install deno? [Y/n] " response
+  if [[ -n "$response" && ! "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
+    return 0
+  fi
+  check_dependencies cargo cmake
+  cargo install deno --locked
+  deno --version
+}
+
 ask_install_cargo
-ask_install_just
+ask_install_just-lsp
+# ask_install_deno
 
 # for update
 # rustup update

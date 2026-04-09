@@ -10,7 +10,8 @@ install() {
   sudo apt install -y build-essential curl git gitk \
     procps unzip screen htop xclip imagemagick \
     ca-certificates openssh-server \
-    mc p7zip-full catdoc unrar antiword mplayer
+    mc p7zip-full catdoc unrar antiword mplayer \
+    cmake vim tmux
 
   # drivers for harware decoding on amd video card
   sudo apt install -y va-driver-all
@@ -21,7 +22,7 @@ install() {
   # configure ssh
   sudo apt install -y openssh-server
   # configure ssh connections in double commander?
-  sudo apt install gvfs-backends gvfs-fuse
+  sudo apt install -y gvfs-backends gvfs-fuse
 
   # openconnect with core plugin
   sudo apt install -y openconnect network-manager-openconnect
@@ -40,10 +41,10 @@ install() {
 
   # requirements: Ubuntu >= 22.04
   # Change mouse key bindings https://github.com/sezanzeb/input-remapper
-  sudo apt install input-remapper
+  sudo apt install -y input-remapper
 
   # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X?tab=readme-ov-file#from-repositories
-  sudo apt install cpu-x
+  sudo apt install -y cpu-x
 }
 
 install

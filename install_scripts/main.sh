@@ -11,6 +11,7 @@ function main() {
 
   $SCRIPT_DIR/apt_apps.sh
   $SCRIPT_DIR/asdf.sh
+  $SCRIPT_DIR/cargo.sh
   $SCRIPT_DIR/yt-dlp.sh
   $SCRIPT_DIR/docker_desktop_ubuntu.sh
   # $SCRIPT_DIR/create_dirs.sh

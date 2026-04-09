@@ -43,8 +43,19 @@ insert-aliases:
     config/insert_aliases.py -s work-scripts/funbox/bash_aliases; \
   fi
 
-# (Not tested!) Change default home directories to English
+# Change default home directories to English
 rename-home-dirs:
   #!/usr/bin/env bash
   . ./scripts/utils.sh
   rename_dirs
+
+# Package, send and extract on remote machine
+deploy user host:
+  @if [ -z "{{user}}" ] || [ -z "{{host}}" ]; then \
+    echo "Usage: just deploy <user> <host>"; \
+    exit 1; \
+  fi
+  git ls-files | tar -czf /tmp/dotfiles.tar.gz -T -
+  scp /tmp/dotfiles.tar.gz {{user}}@{{host}}:/tmp/
+  ssh {{user}}@{{host}} "mkdir -p ~/dotfiles && tar -xzf /tmp/dotfiles.tar.gz -C ~/dotfiles && rm /tmp/dotfiles.tar.gz"
+  rm /tmp/dotfiles.tar.gz

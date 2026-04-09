@@ -13,11 +13,8 @@ install() {
   flatpak install --system flathub \
     org.keepassxc.KeePassXC \
     org.qbittorrent.qBittorrent \
-    io.dbeaver.DBeaverCommunity \
     com.tomjwatson.Emote
 }
-
-check_deps
 
 configure_flatpak
 install

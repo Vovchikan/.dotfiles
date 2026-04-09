@@ -20,7 +20,6 @@ git config --global rebase.autosquash true
 git config --global rebase.abbreviatecommands true
 
 # Aliases
-git config --global --remove-section alias
 git config --global alias.s 'status'
 git config --global alias.lol 'log --oneline'
 git config --global alias.lol3 'lol -3'
