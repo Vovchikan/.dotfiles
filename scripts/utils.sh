@@ -56,7 +56,7 @@ get-gpg-lazy() {
   echo "Проверка наличия GPG-ключа для $USER_STRING..."
 
   # Поиск ключа по email
-  GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG 2>/dev/null | grep -A1 "sec" | tail -1 | awk '{print $1}' | cut -d'/' -f2)
+  GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG 2>/dev/null | grep -A1 "sec" | tail -1 | awk '{print $1}' | cut -d'/' -f2 || true)
 
   # Дополнительная проверка, что ключ принадлежит указанному email
   if [ -n "$GPG_KEY_ID" ]; then

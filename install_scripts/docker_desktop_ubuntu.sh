@@ -76,7 +76,6 @@ Signed-By: /etc/apt/keyrings/docker.asc
 EOF
 }
 
-check_deps
 setup_docker_pass
 setup_docker_rep
 sudo apt update
