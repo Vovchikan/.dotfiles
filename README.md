@@ -67,15 +67,17 @@ $MYSCRIPTS/create-755.sh --help
 | `make venv`         | Создаёт Python venv в папке `./venv` и устанавливает зависимости из `config/requirements.txt` |
 | `make requirements` | Обновляет `config/requirements.txt` на основе текущего окружения                              |
 
-### Примеры конфигов
+## Конфиги
+
+### [Vim](vim/README.md)
+
+### [Tmux](tmux/README.md)
+
+## Примеры конфигов
 
 #### Neovim
 
 [Example](https://gist.github.com/nat-418/493d40b807132d2643a7058188bff1ca)
-
-#### Tmux
-
-[Readme](tmux/README.md)
 
 #### Zed
 
