@@ -7,7 +7,7 @@ source "$DPATH/scripts/utils.sh"
 set -Eeuo pipefail
 
 function main() {
-  apt_update
+  sudo apt update && sudo apt upgrade -y
 
   $SCRIPT_DIR/apt_apps.sh
   $SCRIPT_DIR/asdf.sh

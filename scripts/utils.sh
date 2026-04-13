@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Don't use in scripts with 'set -e'
 apt_update() {
   UPDATE_CACHE="/tmp/apt_updates_cache"
   CURRENT_TIME=$(date +%s)
@@ -42,6 +43,11 @@ rename_dirs() {
 
 # Get key or create new if not exists
 # the result will be in GPG_KEY_ID
+#
+# Delete key:
+# 1. Search for key using 'gpg --list-keys', copy ID between pub and uid
+# 2. First delete secret key, then public
+# 'gpg --delete-secret-key ID', 'gpg --delete-key ID'
 get-gpg-lazy() {
   if [ $# -lt 2 ]; then
     echo "Ошибка: требуется указать имя и email"
