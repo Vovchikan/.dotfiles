@@ -1,8 +1,10 @@
-### After installation script
+## After installation script
 
 При вервом запуске tmux автоматически скачает пакетный менеджер. Остальные плагины нужно скачать вручную, нажав комбинацию клавиш - `prefix` + <kbd>I</kbd>.
 
-### Key bindings
+## Key Bindings
+
+### TPM
 
 `prefix` + <kbd>I</kbd>
 
@@ -17,7 +19,28 @@
 
 - remove/uninstall plugins not on the plugin list
 
-### Tmux-ressurect key bindings
+### Navigate between windows
+
+```
+Ctrl-shift-left  - previous-window
+Ctrl-shift-right - next-window
+
+prefix + w - show all windows
+prefix + l - switch to last pane (in one session)
+prefix + L - switch to last pane (in all sessions)
+```
+
+### Else
+
+```
+prefix + r - reload .tmux.conf
+prefix + z - Fill screen with current pane (Zoom)
+
+prefix + Ctrl-l - clear screen in current tmux pane
+prefix + Ctrl-\ - send `SIGQUIT`
+```
+
+### Tmux-ressurect
 
 The default key bindings are:
 

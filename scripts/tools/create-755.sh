@@ -4,7 +4,7 @@ ADD_FLAGS=false
 FILE_NAME=""
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
-TEMPLATE_DIR="$SCRIPT_DIR/../templates"
+TEMPLATE_DIR="$SCRIPT_DIR/templates"
 
 usage() {
   echo "Usage: $0 [options] <filename>"
@@ -62,7 +62,7 @@ else
       echo "#!/usr/bin/env bash" > "$FILE_NAME"
       echo "" >> "$FILE_NAME"
       echo "set -Eeuo pipefail" >> "$FILE_NAME"
-      echo 'source "$MYSCRIPTS/utils.sh"' >> "$FILE_NAME"
+      echo 'source "$MYSCRIPTS/tools/utils.sh"' >> "$FILE_NAME"
       ;;
     py)
       echo "#!/usr/bin/env python3" > "$FILE_NAME"

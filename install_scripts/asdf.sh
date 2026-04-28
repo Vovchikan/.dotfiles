@@ -10,7 +10,7 @@
 ASDF_VERSION="v0.18.1"
 
 set -Eeuo pipefail
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 ask_install_asdf() {
   if command -v asdf &> /dev/null; then

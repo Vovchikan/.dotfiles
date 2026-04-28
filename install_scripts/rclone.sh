@@ -5,7 +5,7 @@ if command -v rclone &> /dev/null; then
   exit 0
 fi
 
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 check_dependencies curl
 

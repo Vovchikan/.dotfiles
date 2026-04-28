@@ -5,7 +5,7 @@
 
 set -Eeuo pipefail
 
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 echo
 read -r -p "Install yt-dlp? [y/N] " response

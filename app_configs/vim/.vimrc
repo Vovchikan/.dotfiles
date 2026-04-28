@@ -70,6 +70,13 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'Yggdroot/indentLine'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end() " Initialize plugin system
 " END CONFIGURE vim-plug
+
+" НАСТРОЙКИ ПЛАГИНОВ
+
+for f in split(glob('~/.vim/plug-config/*.vim'), '\n')
+    exe 'source' f
+endfor

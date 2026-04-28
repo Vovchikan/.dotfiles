@@ -6,7 +6,7 @@
 
 ```shell
 $ python3
->>> from configure_scripts.my_utils import link_path
+>>> from configure.my_utils import link_path
 >>> import os
 >>>
 >>> src = os.path.expanduser("~/.dotfiles/zed/keymap.json")

@@ -29,7 +29,7 @@ set -Eeuo pipefail
 NAME="Vladimir"
 EMAIL="vovchikan@gmail.com"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
-source "$SCRIPT_DIR/../scripts/utils.sh"
+source "$SCRIPT_DIR/../scripts/tools/utils.sh"
 
 check_dependencies "${deps[@]}"
 
@@ -73,6 +73,7 @@ URIs: https://download.docker.com/linux/ubuntu
 Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
 Components: stable
 Signed-By: /etc/apt/keyrings/docker.asc
+Architectures: amd64
 EOF
 }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -Eeuo pipefail
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 supported_versions=(
   "24.04"

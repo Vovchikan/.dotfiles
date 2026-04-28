@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
-source "$SCRIPT_DIR/../scripts/utils.sh"
+source "$SCRIPT_DIR/../scripts/tools/utils.sh"
 
 check_dependencies git
 
@@ -36,5 +36,14 @@ git config --global alias.taglog \
       cat; \
     fi"
 
+## hide changes in indexed files (only for local use)
+git config --global alias.hide 'update-index --skip-worktree'
+git config --global alias.unhide 'update-index --no-skip-worktree'
+git config --global alias.hidden '!git ls-files -v | grep "^S"'
+
+## ignore changes in indexed files (only for local use)
+git config --global alias.assume 'update-index --assume-unchanged'
+git config --global alias.unassume 'update-index --no-assume-unchanged'
+git config --global alias.assumed '!git ls-files -v | grep "^h"'
 
 git config --list --global

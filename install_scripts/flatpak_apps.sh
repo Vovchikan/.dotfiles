@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 check_dependencies flatpak
 

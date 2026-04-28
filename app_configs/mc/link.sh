@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-set -Eeuo pipefail
+# set -Eeuo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
 
 ln -vs --target-directory="$HOME/.config" "$SCRIPT_DIR/.config/mc"
 
 # Do not track changes in some files
 pushd "$SCRIPT_DIR"
-git-hide "$SCRIPT_DIR/.config/mc/panels.ini"
-git-hide "$SCRIPT_DIR/.config/mc/ini"
+git hide "$SCRIPT_DIR/.config/mc/ini"
+git hide "$SCRIPT_DIR/.config/mc/hotlist"
+git hide "$SCRIPT_DIR/.config/mc/panels.ini"
 popd
 
 # for item in "$SCRIPT_DIR/.config/mc"/*; do

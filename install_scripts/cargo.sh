@@ -4,7 +4,7 @@
 
 set -Eeuo pipefail
 
-source "$MYSCRIPTS/utils.sh"
+source "$MYSCRIPTS/tools/utils.sh"
 
 # https://rust-lang.org/ru/tools/install/
 ask_install_cargo() {

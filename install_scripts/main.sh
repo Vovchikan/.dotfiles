@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)" || exit 1
 DPATH="$SCRIPT_DIR/.." # install_scripts -> dotfiles
-source "$DPATH/scripts/utils.sh"
+source "$DPATH/scripts/tools/utils.sh"
 
 set -Eeuo pipefail
 
@@ -40,6 +40,13 @@ function software() {
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
   then
     $SCRIPT_DIR/razer.sh
+  fi
+
+  echo
+  read -r -p "Install amdgpu_top? [y/N] " response
+  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+  then
+    $SCRIPT_DIR/amdgpu_top.sh
   fi
 
   echo

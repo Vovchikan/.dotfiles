@@ -8,6 +8,9 @@ kitty.conf.swp
 # Kate
 *.kate-swp
 
+# Vim
+*.swp
+
 # vscode
 /vscode/.config/Code/*
 # don't ignore User dir
@@ -16,7 +19,7 @@ kitty.conf.swp
 /vscode/.config/Code/User/*/
 
 #qBittorrent
-qbittorrent/.config/qBittorrent/rss/
+app_configs/qbittorrent/.config/qBittorrent/rss/
 
 # Etc
 *.patch

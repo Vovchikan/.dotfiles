@@ -1,0 +1,8 @@
+ENTRY "Home" URL "/home/svv"
+ENTRY "Vivaldi" URL "/home/svv/Downloads/Vivaldi"
+ENTRY "Torrent" URL "/home/svv/data/Downloads/Torrent"
+ENTRY "Dropbox" URL "/home/svv/Dropbox"
+ENTRY "configure ruantiblock user lists" URL "/sh://my-router/etc/ruantiblock/user_lists"
+ENTRY "Poe2 filters" URL "/home/svv/.local/share/Steam/steamapps/compatdata/2694490/pfx/drive_c/users/steamuser/Documents/My Games/Path of Exile 2"
+ENTRY "repos" URL "/home/svv/linux-data/repos"
+ENTRY "/home/svv/Documents/Instructions" URL "/home/svv/Documents/Instructions"
