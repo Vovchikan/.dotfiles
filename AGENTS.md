@@ -57,7 +57,7 @@
 ## Git / workflow quirks
 
 - **Git aliases hidden**: `hide` → `update-index --skip-worktree`, `unhide` → `update-index --no-skip-worktree`, `gitka`
-- **Commit messages**: [Conventional Commits](https://www.conventionalcommits.org/) — `<type>(<scope>): <description>`. Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `style`, `perf`. Scope optional. Description — imperative, no capital letter, no trailing period.
+- **Commit messages**: [Conventional Commits](https://www.conventionalcommits.org/) — `<type>(<scope>): <description>`. Always in **English**. Types: `feat`, `fix`, `chore`, `docs`, `refactor`, `test`, `ci`, `style`, `perf`. Scope optional. Description — imperative, no capital letter, no trailing period.
 - **Snap**: `just` via `snap install --edge --classic just`
 - **Host key**: disabled globally (`accept-new`, `UserKnownHostsFile=/dev/null`) across all SSH
 - **Sandbox**: minimal `.bashrc` with Git aliases pre-config; cleanup `rm -rf /tmp/dotfiles-sandbox-XXXXXX`
