@@ -13,46 +13,63 @@ vram_used="unknown"
 
 # 1. Пытаемся найти через sysfs для amdgpu/nouveau/any DRM device
 for card in /sys/class/drm/card*/device; do
-    if [ -r "$card/mem_info_vram_total" ]; then
-        vram_total_bytes=$(cat "$card/mem_info_vram_total" 2>/dev/null || echo "0")
-        if [ "$vram_total_bytes" != "0" ] && [ "$vram_total_bytes" -gt 0 ] 2>/dev/null; then
-            vram_total=$(echo "$vram_total_bytes" | awk '{printf "%.1f GiB", $1/1024/1024/1024}')
-            if [ -r "$card/mem_info_vram_used" ]; then
-                vram_used_bytes=$(cat "$card/mem_info_vram_used" 2>/dev/null || echo "0")
-                vram_used=$(echo "$vram_used_bytes" | awk '{printf "%.1f GiB", $1/1024/1024/1024}')
-            fi
-            break
-        fi
+  if [ -r "$card/mem_info_vram_total" ]; then
+    vram_total_bytes=$(cat "$card/mem_info_vram_total" 2>/dev/null || echo "0")
+    if [ "$vram_total_bytes" != "0" ] && [ "$vram_total_bytes" -gt 0 ] 2>/dev/null; then
+      vram_total=$(echo "$vram_total_bytes" | awk '{printf "%.1f GiB", $1/1024/1024/1024}')
+      if [ -r "$card/mem_info_vram_used" ]; then
+        vram_used_bytes=$(cat "$card/mem_info_vram_used" 2>/dev/null || echo "0")
+        vram_used=$(echo "$vram_used_bytes" | awk '{printf "%.1f GiB", $1/1024/1024/1024}')
+      fi
+      break
     fi
+  fi
 done
 
 # 2. Fallback для NVIDIA (nvidia-smi)
 if [ "$vram_total" = "unknown" ] && command -v nvidia-smi >/dev/null 2>&1; then
-    vram_total_mb=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits 2>/dev/null | head -n1 | awk '{$1=$1;print}')
-    vram_used_mb=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits 2>/dev/null | head -n1 | awk '{$1=$1;print}')
-    if [ -n "$vram_total_mb" ] && [ "$vram_total_mb" != "[Not Supported]" ] 2>/dev/null; then
-        vram_total=$(echo "$vram_total_mb" | awk '{printf "%.1f GiB", $1/1024}')
-        vram_used=$(echo "$vram_used_mb" | awk '{printf "%.1f GiB", $1/1024}')
-    fi
+  vram_total_mb=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits 2>/dev/null | head -n1 | awk '{$1=$1;print}')
+  vram_used_mb=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits 2>/dev/null | head -n1 | awk '{$1=$1;print}')
+  if [ -n "$vram_total_mb" ] && [ "$vram_total_mb" != "[Not Supported]" ] 2>/dev/null; then
+    vram_total=$(echo "$vram_total_mb" | awk '{printf "%.1f GiB", $1/1024}')
+    vram_used=$(echo "$vram_used_mb" | awk '{printf "%.1f GiB", $1/1024}')
+  fi
 fi
 
 # 3. Fallback через glxinfo (работает только под X11/Wayland)
 if [ "$vram_total" = "unknown" ] && command -v glxinfo >/dev/null 2>&1; then
-    glx_vram=$(glxinfo -B 2>/dev/null | grep -oP 'Video memory:\s*\K[0-9]+' | head -n1)
-    if [ -n "$glx_vram" ]; then
-        vram_total="${glx_vram} MB"
-    fi
+  glx_vram=$(glxinfo -B 2>/dev/null | grep -oP 'Video memory:\s*\K[0-9]+' | head -n1)
+  if [ -n "$glx_vram" ]; then
+    vram_total="${glx_vram} MB"
+  fi
+fi
+
+# --- Sound Server (PipeWire / PulseAudio) ---
+sound_server="unknown"
+
+if [ -S "${XDG_RUNTIME_DIR:-/tmp}/pipewire-0" ] 2>/dev/null || pgrep -x pipewire >/dev/null 2>&1; then
+  if command -v pipewire >/dev/null 2>&1; then
+    sound_server="PipeWire ($(pipewire --version | grep -oP '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1))"
+  else
+    sound_server="PipeWire"
+  fi
+elif [ -S "${XDG_RUNTIME_DIR:-/tmp}/pulse/native" ] 2>/dev/null || pgrep -x pulseaudio >/dev/null 2>&1; then
+  if command -v pulseaudio >/dev/null 2>&1; then
+    sound_server="PulseAudio ($(pulseaudio --version | grep -oP '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1))"
+  else
+    sound_server="PulseAudio"
+  fi
 fi
 
 # 4. Fallback через lspci (парсим prefetchable BAR — приблизительно!)
 if [ "$vram_total" = "unknown" ]; then
-    amd_pci=$(lspci -nnk | awk '/VGA compatible controller.*AMD\/ATI|Display controller.*AMD\/ATI/{print $1; exit}')
-    if [ -n "$amd_pci" ]; then
-        bar_size=$(lspci -v -s "$amd_pci" 2>/dev/null | awk '/Memory at.*64-bit, prefetchable/{print $5; exit}')
-        if [ -n "$bar_size" ]; then
-            vram_total="~${bar_size} (BAR size, приблизительно)"
-        fi
+  amd_pci=$(lspci -nnk | awk '/VGA compatible controller.*AMD\/ATI|Display controller.*AMD\/ATI/{print $1; exit}')
+  if [ -n "$amd_pci" ]; then
+    bar_size=$(lspci -v -s "$amd_pci" 2>/dev/null | awk '/Memory at.*64-bit, prefetchable/{print $5; exit}')
+    if [ -n "$bar_size" ]; then
+      vram_total="~${bar_size} (BAR size, приблизительно)"
     fi
+  fi
 fi
 
 info=$(
@@ -77,6 +94,7 @@ info=$(
   if command -v glxinfo >/dev/null 2>&1; then
     echo "  - **Active renderer**: $(glxinfo -B 2>/dev/null | grep 'OpenGL renderer string' | cut -d: -f2 | xargs || echo 'unknown')"
   fi
+  echo "- **Sound Server**: ${sound_server}"
   echo "- **Display Server**: ${XDG_SESSION_TYPE:-unknown}"
   echo "- **Session**: ${DISPLAY:-}${WAYLAND_DISPLAY:-}"
   echo "- **DE/WM**: ${XDG_CURRENT_DESKTOP:-unknown} / ${DESKTOP_SESSION:-unknown}"
