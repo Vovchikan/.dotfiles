@@ -30,6 +30,7 @@ link-configurations:
   - ./app_configs/tmux/link.sh
   - ./app_configs/mc/link.sh
   - ./app_configs/konsole/link.sh
+  - ./app_configs/vscode/link.sh
 
 # Create python venv
 venv:

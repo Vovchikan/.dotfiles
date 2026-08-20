@@ -1,0 +1,88 @@
+{
+    "trailing-spaces.highlightCurrentLine": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.codeLensFontFamily": "`",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "settingsSync.ignoredExtensions": [
+        "cweijan.vscode-autohotkey-plus",
+        "mark-wiemer.vscode-autohotkey-plus-plus",
+        "ms-vscode.cpptools",
+        "ms-vscode.powershell",
+        "sst-dev.opencode",
+        "davidwang.ini-for-vscode",
+        "nefrob.vscode-just-syntax"
+    ],
+    "editor.tabSize": 2,
+    "files.autoSave": "onFocusChange",
+    "git.openRepositoryInParentFolders": "always",
+    "extensions.ignoreRecommendations": true,
+
+
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.startOnNewLine": true,
+
+
+    "editor.unicodeHighlight.allowedLocales": {
+        "ru": true
+    },
+
+    "elixirLS.dialyzerEnabled": false,
+    "elixirLS.incrementalDialyzer": false,
+    "todo-tree.general.exportPath": "/tmp/todo-tree-%Y%m%d-%H%M.txt",
+    "todo-tree.filtering.excludeGlobs": [
+        "**/node_modules/*/**",
+        "**/deps/*/**",
+        "**/_build/*/**",
+        "**/dev_data/*/**",
+        "**/log/*",
+        "**/.*/**"
+    ],
+    "[phoenix-heex]": {
+        "editor.defaultFoldingRangeProvider": "vscode.html-language-features"
+    },
+    "emmet.includeLanguages": {
+        "phoenix-heex": "html"
+    },
+
+
+    "todo-tree.filtering.includeHiddenFiles": true,
+    "markdown-preview-enhanced.enablePreviewZenMode": true,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "python.experiments.enabled": false,
+    "python.terminal.activateEnvInCurrentTerminal": false,
+    "chat.commandCenter.enabled": false,
+    "window.commandCenter": false,
+    "git.blame.statusBarItem.enabled": false,
+    "editor.showFoldingControls": "always",
+    "markdown-preview-enhanced.previewTheme": "one-dark.css",
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "python.analysis.typeCheckingMode": "strict",
+    "markdown-preview-enhanced.codeBlockTheme": "github-dark.css",
+    "chat.disableAIFeatures": true,
+    "workbench.editorAssociations": {
+        "*.md": "default"
+    },
+    "files.associations": {
+        "ini": "ini",
+        "mc.keymap": "ini"
+    },
+    "roo-cline.debug": false,
+    "roo-cline.allowedCommands": [
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "roo-cline.deniedCommands": [],
+    "terminal.integrated.allowChords": false,
+    "workbench.settings.applyToAllProfiles": [
+        "terminal.integrated.allowChords",
+        "terminal.integrated.copyOnSelection"
+    ],
+    "terminal.integrated.copyOnSelection": true,
+    "todo-tree.ripgrep.ripgrep": "ripgrep",
+    "terminal.integrated.fontFamily": "monospace",
+    "settingsSync.ignoredSettings": []
+}

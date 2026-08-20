@@ -18,4 +18,8 @@ assert_file "$HOME/.config/mc/mc.keymap"
 echo "--- Konsole ---"
 assert_file "$HOME/.local/share/konsole/MyDefault.profile"
 
+echo "--- VSCode ---"
+assert_link "$HOME/.config/Code/User/settings.json"   "$DOTFILES_DIR/app_configs/vscode/.config/Code/User/settings.json"
+assert_link "$HOME/.config/Code/User/keybindings.json" "$DOTFILES_DIR/app_configs/vscode/.config/Code/User/keybindings.json"
+
 print_results
