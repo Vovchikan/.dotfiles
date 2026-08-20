@@ -21,7 +21,7 @@
 **Standard apply flow:**
 
 1. `just configure-git` → global Git config (`user.name`, `alias.hide`, `alias.unhide`, etc.)
-2. `just link-configurations` → symlinks in `~/.config/` and `~/.local/share/konsole/`
+2. `just link-configs` → symlinks in `~/.config/` and `~/.local/share/konsole/`
 3. `just setup-env` → writes `~/.my_scripts.conf` with `$MYSCRIPTS`, `$WORKSCRIPTS`
 4. `just insert-aliases` → bash aliases from `scripts/aliases/bash_aliases` (includes `work-scripts/funbox/` fallback)
 5. `tests/run.sh --live` → verifies everything applied
@@ -73,6 +73,7 @@
 ## Repo-specific conventions
 
 - **Shebangs**: `#!/usr/bin/env bash`/`#!/usr/bin/env python3` on scripts; `just` for tasks
+- **Script templates**: new scripts should be based on templates from `scripts/tools/templates/` when applicable
 - **Error handling**: `set -Eeuo pipefail` on test/run scripts
 - **Paths**: absolute paths in Python scripts (`os.path.abspath()`); `~/.my_scripts.conf` for shared config
 - **VM names**: `dotfiles-test` (headless, 4GB RAM), `dotfiles-test-desktop` (KDE, 8GB RAM + snapshot `clean`)
