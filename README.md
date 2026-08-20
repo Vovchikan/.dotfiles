@@ -41,7 +41,8 @@ just install
 
 ```shell
 just configure
-just link-configurations
+just link-configs
+just merge-configs
 ```
 
 ### Папка scripts
@@ -116,7 +117,7 @@ SSH host key не запрашивается (`StrictHostKeyChecking=accept-new`
   Например, Konsole будет проверен только на KDE-системе.
 
 - **`--sandbox`** — создаёт временный `$HOME`, применяет к нему рецепты
-  (link-configurations, setup-env, insert-aliases, git config), запускает
+  (link-configs, setup-env, insert-aliases, git config), запускает
   тесты, затем удаляет sandbox.
 
 ### Область применения
@@ -216,7 +217,7 @@ Desktop ВМ создаётся один раз, после чего снапш�
 4. **Деплой**: архив распаковывается в `~/dotfiles/` на ВМ.
 5. **Применение конфигов** (в реальный `$HOME` пользователя):
    - `just configure-git` — настройка Git
-   - `just link-configurations` — симлинки конфигов
+   - `just link-configs` — симлинки конфигов
    - `just setup-env` — `~/.my_scripts.conf`
    - `just insert-aliases` — алиасы в `.bashrc`
 6. **Тесты**: `./tests/run.sh --live` проверяет, что всё применилось.

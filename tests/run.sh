@@ -35,7 +35,7 @@ BASHRC
   ./configure/git.sh 2>&1 | sed 's/^/  /'
 
   echo "--- Link configurations ---"
-  just link-configurations 2>&1 | sed 's/^/  /'
+  just link-configs 2>&1 | sed 's/^/  /'
 
   echo "--- Setup env ---"
   just setup-env 2>&1 | sed 's/^/  /'

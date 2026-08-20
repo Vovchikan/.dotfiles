@@ -25,7 +25,7 @@ configure-git:
   ./configure/git.sh
 
 # Create sym-links in ~/.config
-link-configurations:
+link-configs:
   - ./app_configs/vim/link.sh
   - ./app_configs/tmux/link.sh
   - ./app_configs/mc/link.sh
@@ -132,7 +132,7 @@ test-vm user="testuser" vm="dotfiles-test":
      && rm /tmp/dotfiles.tar.gz \
      && cd ~/dotfiles \
      && just configure-git \
-     && just link-configurations \
+     && just link-configs \
      && just setup-env \
      && just insert-aliases \
      && ./tests/run.sh --live"
