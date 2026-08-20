@@ -17,7 +17,7 @@
     ```
   - [ ] Каждая интерактивная секция проверяет: флаг → JSON-конфиг → stdin
   - [ ] `sudo update-alternatives --config editor` — тоже неинтерактивный режим
-- [ ] Отрефакторить `vscode.sh`
+- [x] Отрефакторить `vscode.sh`
   - [x] Создать функцию установки расширения из github для vscode по примеру `install-nefrob.vscode-just`
-  - [ ] Реализовать функцию установки расширений без GitHub Releases (сборка из исходников)
-  - [ ] Проверить функцию на [расширении для ini-файлов](https://github.com/daviduuang/ini-for-vscode)
+  - [x] Реализовать функцию установки расширений без GitHub Releases (сборка из исходников)
+  - [x] Проверить функцию на [расширении для ini-файлов](https://github.com/daviduuang/ini-for-vscode)
