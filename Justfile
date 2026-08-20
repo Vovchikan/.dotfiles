@@ -32,6 +32,10 @@ link-configurations:
   - ./app_configs/konsole/link.sh
   - ./app_configs/vscode/link.sh
 
+# Merge saved settings into live config files
+merge-configs:
+  @helpers/merge_keepassxc.py || true
+
 # Create python venv
 venv:
   make venv

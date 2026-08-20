@@ -36,6 +36,15 @@ assert_dir() {
   fi
 }
 
+assert_return() {
+  local expected=$1 actual=$2
+  if [ "$expected" = "$actual" ]; then
+    echo -e "  ${GREEN}✓${NC} return code $actual"; ((PASSED++))
+  else
+    echo -e "  ${RED}✗${NC} return code $actual ${RED}[expected: $expected]${NC}"; ((FAILED++))
+  fi
+}
+
 assert_git_config() {
   local key=$1 expected=$2
   local actual
