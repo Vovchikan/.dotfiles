@@ -11,7 +11,7 @@ install() {
     procps unzip screen htop xclip imagemagick \
     ca-certificates openssh-server \
     mc p7zip-full catdoc unrar antiword mplayer \
-    cmake vim tmux timeshift
+    cmake vim tmux timeshift spellcheck
 
   # drivers for harware decoding on amd video card
   sudo apt install -y va-driver-all
