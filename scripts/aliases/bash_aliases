@@ -12,13 +12,15 @@ alias gitfdates="$MYSCRIPTS/tools/git_file_dates.py"
 # linux things
 alias update-list='source $MYSCRIPTS/tools/utils.sh; apt_update'
 alias backupf='f() { cp -fv --backup=numbered "$1" "$1"; }; f'
+## change xclip to wl-copy, after switching to wayland
 alias clipf='f() { cat "$1" | xclip -sel clip; }; f'
-# вывод размера папок
+alias clipcom='history -p !! | xclip -sel clip'
+## вывод размера папок
 alias list-size='du -h --max-depth=1 ./ | sort -hr'
-# сравнение папок
+## сравнение папок
 alias difff='diff --color=always -uN'
 alias difffr='difff -r'
-# показывает диски в режиме "только для чтения"
+## показывает диски в режиме "только для чтения"
 alias ro-show='grep "[[:space:]]ro[[:space:],]" /proc/mounts'
 
 # linux info
