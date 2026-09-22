@@ -189,15 +189,6 @@ Desktop ВМ создаётся один раз, после чего снапш�
 4. ВМ остаётся работать для инспекции (независимо от результата)
 5. Следующий реверт вернёт её к чистому состоянию
 
-### Что тестируется
-
-| Suite            | Что проверяет                                             |
-| ---------------- | --------------------------------------------------------- |
-| `test_links`     | symlink'ы vim, tmux, mc, konsole                          |
-| `test_aliases`   | алиасы из `scripts/aliases/bash_aliases`                  |
-| `test_configure` | git config (user.name, pull.ff, алиасы hide/assume и др.) |
-| `test_env`       | `~/.my_scripts.conf`, `$MYSCRIPTS`, `$WORKSCRIPTS`        |
-
 ### Как это работает под капотом
 
 **Локальные тесты:**
