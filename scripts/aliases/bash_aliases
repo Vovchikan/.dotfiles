@@ -10,25 +10,29 @@ alias gitka='gitk --all &'
 alias gitfdates="$MYSCRIPTS/tools/git_file_dates.py"
 
 # linux things
-alias update-list='source $MYSCRIPTS/tools/utils.sh; apt_update'
+## Интерактивное обновление системы
+alias linux-update='source $MYSCRIPTS/tools/utils.sh; apt_update'
+## Создание бэкапа файла с прибавлением номера бэкапа
 alias backupf='f() { cp -fv --backup=numbered "$1" "$1"; }; f'
 ## change xclip to wl-copy, after switching to wayland
 alias clipf='f() { cat "$1" | xclip -sel clip; }; f'
+## Копирование последней команды в буфер
 alias clipcom='history -p !! | xclip -sel clip'
-## вывод размера папок
-alias list-size='du -h --max-depth=1 ./ | sort -hr'
-## сравнение папок
+## Вывод размера папок
+alias folders-size='du -h --max-depth=1 ./ | sort -hr'
+## Сравнение папок
 alias difff='diff --color=always -uN'
 alias difffr='difff -r'
-## показывает диски в режиме "только для чтения"
+## Показывает диски в режиме "только для чтения"
 alias ro-show='grep "[[:space:]]ro[[:space:],]" /proc/mounts'
 
 # linux info
-alias show-linux='$MYSCRIPTS/tools/linux-info.sh'
-## GPU info
-alias show-gpu='inxi -Gxz'
+## Вывод общей информации и копирование её в буфер
+alias linux-info='$MYSCRIPTS/tools/linux-info.sh'
+## Вывод информации о GPU
+alias linux-gpu='inxi -Gxz'
 ## Вывод дисков с шифрованием luks
-alias show-crypt-disks='sudo blkid | grep crypto_LUKS'
+alias linux-crypt-disks='sudo blkid | grep crypto_LUKS'
 
 # other
 alias myscripts-env='source ~/.my_scripts.conf'
