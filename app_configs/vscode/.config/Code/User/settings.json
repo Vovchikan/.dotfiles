@@ -1,11 +1,42 @@
 {
-    "trailing-spaces.highlightCurrentLine": false,
-    "security.workspace.trust.untrustedFiles": "open",
+    "chat.disableAIFeatures": true,
+    "window.commandCenter": false,
+    "workbench.colorTheme": "GitHub Dark Dimmed",
+    "workbench.editorAssociations": {
+        "*.md": "default"
+    },
+
     "editor.codeLensFontFamily": "`",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 16,
+    "editor.showFoldingControls": "always",
+    "editor.tabSize": 2,
+    "editor.unicodeHighlight.allowedLocales": {
+        "ru": true
+    },
     "editor.unicodeHighlight.nonBasicASCII": false,
+    "trailing-spaces.highlightCurrentLine": false,
+
+    "files.autoSave": "onFocusChange",
+    "files.associations": {
+        "mc.keymap": "ini"
+    },
+
+    "terminal.integrated.allowChords": false,
+    "terminal.integrated.copyOnSelection": true,
+    "workbench.settings.applyToAllProfiles": [
+        "terminal.integrated.allowChords",
+        "terminal.integrated.copyOnSelection"
+    ],
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "terminal.integrated.fontFamily": "monospace",
+
+    "git.blame.statusBarItem.enabled": false,
+    "git.openRepositoryInParentFolders": "always",
+
+    "extensions.ignoreRecommendations": true,
+    "security.workspace.trust.untrustedFiles": "open",
     "settingsSync.ignoredExtensions": [
         "cweijan.vscode-autohotkey-plus",
         "mark-wiemer.vscode-autohotkey-plus-plus",
@@ -15,19 +46,11 @@
         "davidwang.ini-for-vscode",
         "nefrob.vscode-just-syntax"
     ],
-    "editor.tabSize": 2,
-    "files.autoSave": "onFocusChange",
-    "git.openRepositoryInParentFolders": "always",
-    "extensions.ignoreRecommendations": true,
-
 
     "autoDocstring.docstringFormat": "numpy",
     "autoDocstring.startOnNewLine": true,
-
-
-    "editor.unicodeHighlight.allowedLocales": {
-        "ru": true
-    },
+    "python.analysis.typeCheckingMode": "strict",
+    "python.experiments.enabled": false,
 
     "elixirLS.dialyzerEnabled": false,
     "[phoenix-heex]": {
@@ -37,28 +60,6 @@
         "phoenix-heex": "html"
     },
 
-
-    "terminal.integrated.enableMultiLinePasteWarning": "never",
-    "python.experiments.enabled": false,
-    "window.commandCenter": false,
-    "git.blame.statusBarItem.enabled": false,
-    "editor.showFoldingControls": "always",
-    "markdown-preview-enhanced.previewTheme": "one-dark.css",
-    "workbench.colorTheme": "GitHub Dark Dimmed",
-    "python.analysis.typeCheckingMode": "strict",
     "markdown-preview-enhanced.codeBlockTheme": "github-dark.css",
-    "chat.disableAIFeatures": true,
-    "workbench.editorAssociations": {
-        "*.md": "default"
-    },
-    "files.associations": {
-        "mc.keymap": "ini"
-    },
-    "terminal.integrated.allowChords": false,
-    "workbench.settings.applyToAllProfiles": [
-        "terminal.integrated.allowChords",
-        "terminal.integrated.copyOnSelection"
-    ],
-    "terminal.integrated.copyOnSelection": true,
-    "terminal.integrated.fontFamily": "monospace"
+    "markdown-preview-enhanced.previewTheme": "one-dark.css"
 }
