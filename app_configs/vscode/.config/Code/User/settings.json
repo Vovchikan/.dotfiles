@@ -52,6 +52,18 @@
     "python.analysis.typeCheckingMode": "strict",
     "python.experiments.enabled": false,
 
+    "[go]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "go.testOnSave": true,
+    "go.vetOnSave": "package",
+    "gopls": {
+        "ui.diagnostic.staticcheck": true
+    },
+
     "elixirLS.dialyzerEnabled": false,
     "[phoenix-heex]": {
         "editor.defaultFoldingRangeProvider": "vscode.html-language-features"
