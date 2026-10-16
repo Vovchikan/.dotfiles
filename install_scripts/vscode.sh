@@ -22,54 +22,69 @@ vscode_is_installed() {
 }
 
 # Install VS Code extension from GitHub releases
-# Usage: install_vscode_ext_from_github <repo>
+# Usage: install_vscode_ext_from_github <repo> [package-json-path]
 #   repo - GitHub "owner/repo"
+#   package-json-path - path to package.json in the repository; defaults to package.json
 #
 # Requirements:
-#   - repo must have package.json in root with "publisher" and "name" fields
+#   - package.json must have string "publisher", "name", and "version" fields
 #   - latest release must contain a .vsix asset named "{name}-{version}.vsix"
 install_vscode_ext_from_github() {
   local REPO="$1"
+  local PKG_PATH="${2:-package.json}"
 
   check_dependencies curl code jq
 
-  local PKG_JSON
-  PKG_JSON=$(curl -s "https://raw.githubusercontent.com/${REPO}/master/package.json")
-  if [ -z "$PKG_JSON" ] || ! echo "$PKG_JSON" | jq -e '.publisher' > /dev/null 2>&1; then
-    PKG_JSON=$(curl -s "https://raw.githubusercontent.com/${REPO}/main/package.json")
+  local LATEST_URL LATEST_TAG
+  if ! LATEST_URL=$(curl -fsSL -o /dev/null -w '%{url_effective}' "https://github.com/${REPO}/releases/latest"); then
+    echo "❌ Failed to fetch latest release for ${REPO}"
+    return 1
   fi
 
-  local PUBLISHER NAME
-  PUBLISHER=$(echo "$PKG_JSON" | jq -r '.publisher')
-  NAME=$(echo "$PKG_JSON" | jq -r '.name')
-  local EXT_ID="${PUBLISHER}.${NAME}"
-
-  local LATEST_VERSION
-  LATEST_VERSION=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | jq -r '.tag_name')
-
-  if [ -z "$LATEST_VERSION" ] || [ "$LATEST_VERSION" = "null" ]; then
+  LATEST_TAG="${LATEST_URL##*/}"
+  if [ -z "$LATEST_TAG" ] || [ "$LATEST_TAG" = "latest" ]; then
     echo "❌ Failed to fetch latest version for ${REPO}"
     return 1
   fi
 
-  if code --list-extensions | grep -q "${EXT_ID}"; then
-    local INSTALLED_VERSION
-    INSTALLED_VERSION=$(code --list-extensions --show-versions | grep "${EXT_ID}" | cut -d@ -f2)
-
-    if [ "$INSTALLED_VERSION" = "$LATEST_VERSION" ]; then
-      echo "✅ ${EXT_ID} already installed - ${LATEST_VERSION}"
-      return 0
-    fi
+  local PKG_JSON
+  if ! PKG_JSON=$(curl -fsSL "https://raw.githubusercontent.com/${REPO}/${LATEST_TAG}/${PKG_PATH}"); then
+    echo "❌ Failed to fetch ${PKG_PATH} for ${REPO} at ${LATEST_TAG}"
+    return 1
+  fi
+  if ! echo "$PKG_JSON" | jq -e '
+    (.publisher | strings) and (.name | strings) and (.version | strings)
+  ' > /dev/null 2>&1; then
+    echo "❌ ${PKG_PATH} for ${REPO} must contain string publisher, name, and version fields"
+    return 1
   fi
 
-  local VSIX_NAME="${NAME}-${LATEST_VERSION}.vsix"
-  local VSIX_URL="https://github.com/${REPO}/releases/latest/download/${VSIX_NAME}"
+  local PUBLISHER NAME VERSION
+  PUBLISHER=$(echo "$PKG_JSON" | jq -r '.publisher')
+  NAME=$(echo "$PKG_JSON" | jq -r '.name')
+  VERSION=$(echo "$PKG_JSON" | jq -r '.version')
+  local EXT_ID="${PUBLISHER}.${NAME}"
+
+  if vscode_is_installed "$EXT_ID" "$VERSION"; then
+    echo "✅ ${EXT_ID} already installed - ${VERSION}"
+    return 0
+  fi
+
+  local VSIX_NAME="${NAME}-${VERSION}.vsix"
+  local VSIX_URL="https://github.com/${REPO}/releases/download/${LATEST_TAG}/${VSIX_NAME}"
   local TMP_DIR
   TMP_DIR=$(mktemp -d)
 
-  curl -L "$VSIX_URL" -o "${TMP_DIR}/${VSIX_NAME}"
-  code --install-extension "${TMP_DIR}/${VSIX_NAME}"
+  if ! curl -fL "$VSIX_URL" -o "${TMP_DIR}/${VSIX_NAME}"; then
+    echo "❌ Failed to download ${VSIX_NAME} from ${REPO}"
+    rm -rf "$TMP_DIR"
+    return 1
+  fi
+
+  local RESULT=0
+  code --install-extension "${TMP_DIR}/${VSIX_NAME}" || RESULT=$?
   rm -rf "$TMP_DIR"
+  return "$RESULT"
 }
 
 # Install VS Code extension from source when the repo has no GitHub releases.
@@ -238,4 +253,5 @@ install_vscode_ext_from_source() {
 }
 
 install_vscode_ext_from_github "nefrob/vscode-just"
+install_vscode_ext_from_github "golang/vscode-go" "extension/package.json"
 install_vscode_ext_from_source "daviduuang/ini-for-vscode"
