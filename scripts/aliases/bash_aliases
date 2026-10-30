@@ -9,6 +9,20 @@ alias dropbox-off='fusermount -u ~/dbx'
 alias gitka='gitk --all &'
 alias gitfdates="$MYSCRIPTS/tools/git_file_dates.py"
 
+# opencode
+alias optail="tail -f ~/.local/share/opencode/log/opencode.log"
+opclean() {
+  opencode session list |
+    tail -n +2 |
+    fzf \
+      --multi \
+      --prompt="Delete sessions > " \
+      --height=40% \
+      --reverse |
+    awk '{print $1}' |
+    xargs -r -n1 opencode session delete
+}
+
 # linux things
 ## Интерактивное обновление системы
 alias linux-update='source $MYSCRIPTS/tools/utils.sh; apt_update'
