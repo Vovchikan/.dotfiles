@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 source "$(dirname "$0")/helpers.sh"
 
-CONF_FILE="$HOME/.my_scripts.conf"
+CONF_FILE="$HOME/.dotfiles.conf"
 
 echo "--- Environment config ---"
 assert_file "$CONF_FILE"
@@ -17,6 +17,11 @@ if [ -f "$CONF_FILE" ]; then
     echo -e "  ${GREEN}✓${NC} WORKSCRIPTS=$WORKSCRIPTS"; ((PASSED++))
   else
     echo -e "  ${RED}✗${NC} WORKSCRIPTS not set"; ((FAILED++))
+  fi
+  if [ -n "${DOTFILES_BIN:-}" ]; then
+    echo -e "  ${GREEN}✓${NC} DOTFILES_BIN=$DOTFILES_BIN"; ((PASSED++))
+  else
+    echo -e "  ${RED}✗${NC} DOTFILES_BIN not set"; ((FAILED++))
   fi
 fi
 

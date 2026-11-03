@@ -1,5 +1,5 @@
 # подгружаем путь к скриптам
-[ -f ~/.my_scripts.conf ] && source ~/.my_scripts.conf
+[ -f ~/.dotfiles.conf ] && source ~/.dotfiles.conf
 
 # rclone (dropbox)
 alias dropbox-on='rclone mount --daemon dbx: ~/dbx'
@@ -49,7 +49,7 @@ alias linux-gpu='inxi -Gxz'
 alias linux-crypt-disks='sudo blkid | grep crypto_LUKS'
 
 # other
-alias myscripts-env='source ~/.my_scripts.conf'
+alias myscripts-env='source ~/.dotfiles.conf'
 alias ecrontabvim='VISUAL=vim crontab -e'
 alias ecrontabnvim='VISUAL=nvim crontab -e'
 alias mc='LANG=C.utf8 mc'

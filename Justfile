@@ -40,7 +40,7 @@ merge-configs:
 venv:
   make venv
 
-# Create ~/.my_scripts.conf
+# Create ~/.dotfiles.conf
 setup-env:
   helpers/setup_env.py
 

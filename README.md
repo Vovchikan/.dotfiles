@@ -57,6 +57,17 @@ $MYSCRIPTS/tools/create-755.sh --help
 
 Подобнее - [тут](scripts/README.md).
 
+### Папка bin
+
+Каталог для собственных Go-бинарников. Путь к нему записан в переменную `$DOTFILES_BIN`, бинарники в git не попадают (кроме `.gitkeep`).
+
+```shell
+GOBIN="$DOTFILES_BIN" go install ./cmd/myapp
+go build -o "$DOTFILES_BIN/myapp" .
+```
+
+Переменная `GOBIN` глобально не задаётся: у остальных проектов остаётся путь по умолчанию `~/go/bin`.
+
 ### Папка configure
 
 Подобнее - [тут](configure/README.md).
@@ -209,7 +220,7 @@ Desktop ВМ создаётся один раз, после чего снапш�
 5. **Применение конфигов** (в реальный `$HOME` пользователя):
    - `just configure-git` — настройка Git
    - `just link-configs` — симлинки конфигов
-   - `just setup-env` — `~/.my_scripts.conf`
+   - `just setup-env` — `~/.dotfiles.conf`
    - `just insert-aliases` — алиасы в `.bashrc`
 6. **Тесты**: `./tests/run.sh --live` проверяет, что всё применилось.
 

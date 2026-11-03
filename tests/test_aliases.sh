@@ -4,7 +4,7 @@ source "$(dirname "$0")/helpers.sh"
 ALIASES_FILE="$DOTFILES_DIR/scripts/aliases/bash_aliases"
 ALIASES=$(bash -c "
   shopt -s expand_aliases
-  [ -f ~/.my_scripts.conf ] && source ~/.my_scripts.conf
+  [ -f ~/.dotfiles.conf ] && source ~/.dotfiles.conf
   source '$ALIASES_FILE'
   alias
 " 2>/dev/null)

@@ -1,6 +1,3 @@
-# Brew
-Brewfile.lock.json
-
 # Kitty
 kitty.conf.bak
 kitty.conf.swp
@@ -13,21 +10,23 @@ kitty.conf.swp
 
 # vscode
 /vscode/.config/Code/*
-# don't ignore User dir
+## don't ignore User dir
 !/vscode/.config/Code/User
-# ignore dirs in User dir
+## ignore dirs in User dir
 /vscode/.config/Code/User/*/
 
-#qBittorrent
+# qBittorrent
 app_configs/qbittorrent/.config/qBittorrent/rss/
 
-# Etc
-*.patch
-tme@*
-
 # PYTHON
-# Byte-compiled / optimized / DLL files
+## Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 venv/
+
+# etc
+*.patch
+tme@*
+/bin/*
+!/bin/.gitkeep

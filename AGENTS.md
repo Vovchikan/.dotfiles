@@ -5,7 +5,7 @@
 - **Task runner**: `just` (Justfile at root). Primary commands use `just <task>`.
 - **Test runner**: `./tests/run.sh --live` (host check) or `--sandbox` (isolated `/tmp/dotfiles-sandbox-XXXXXX`)
 - **VM testing**: Auto-detects VM IP via `virsh domifaddr`; deploys via SCP with `StrictHostKeyChecking=accept-new` (no host key prompt)
-- **Env & aliases**: `~/.my_scripts.conf` exports `$MYSCRIPTS`, `$WORKSCRIPTS`; custom bash aliases in `scripts/aliases/bash_aliases`
+- **Env & aliases**: `~/.dotfiles.conf` exports `$MYSCRIPTS`, `$WORKSCRIPTS`, `$DOTFILES_BIN`; custom bash aliases in `scripts/aliases/bash_aliases`
 - **Submodules**: `work-scripts` (git@github.com:Vovchikan/work-scripts.git), `kitty/theme` (catppuccin)
 
 ## Exact commands / shortcuts
@@ -22,7 +22,7 @@
 
 1. `just configure-git` → global Git config (`user.name`, `alias.hide`, `alias.unhide`, etc.)
 2. `just link-configs` → symlinks in `~/.config/` and `~/.local/share/konsole/`
-3. `just setup-env` → writes `~/.my_scripts.conf` with `$MYSCRIPTS`, `$WORKSCRIPTS`
+3. `just setup-env` → writes `~/.dotfiles.conf` with `$MYSCRIPTS`, `$WORKSCRIPTS`, `$DOTFILES_BIN`
 4. `just insert-aliases` → bash aliases from `scripts/aliases/bash_aliases` (includes `work-scripts/funbox/` fallback)
 5. `tests/run.sh --live` → verifies everything applied
 
@@ -75,7 +75,7 @@
 - **Shebangs**: `#!/usr/bin/env bash`/`#!/usr/bin/env python3` on scripts; `just` for tasks
 - **Script templates**: new scripts should be based on templates from `scripts/tools/templates/` when applicable
 - **Error handling**: `set -Eeuo pipefail` on test/run scripts
-- **Paths**: absolute paths in Python scripts (`os.path.abspath()`); `~/.my_scripts.conf` for shared config
+- **Paths**: absolute paths in Python scripts (`os.path.abspath()`); `~/.dotfiles.conf` for shared config
 - **VM names**: `dotfiles-test` (headless, 4GB RAM), `dotfiles-test-desktop` (KDE, 8GB RAM + snapshot `clean`)
 - **Test output**: helpers.sh uses color markers (`RED`, `GREEN`) for pass/fail
 

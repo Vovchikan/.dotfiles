@@ -5,10 +5,11 @@ from typing import Dict
 
 DEFAULT_CONFIG: Dict[str, str] = {
     "export MYSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../scripts")),
-    "export WORKSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../work-scripts"))
+    "export WORKSCRIPTS": os.path.abspath(os.path.join(os.path.dirname(__file__), "../work-scripts")),
+    "export DOTFILES_BIN": os.path.abspath(os.path.join(os.path.dirname(__file__), "../bin"))
 }
 
-TARGET_CONF: str = os.path.expanduser("~/.my_scripts.conf")
+TARGET_CONF: str = os.path.expanduser("~/.dotfiles.conf")
 
 
 def load_conf(conf_file: str) -> Dict[str, str]:
@@ -38,7 +39,7 @@ def print_conf(env: Dict[str, str]) -> None:
 def main() -> None:
   parser: argparse.ArgumentParser = argparse.ArgumentParser(
       description=
-      "Формирует ~/.my_scripts.conf на основе DEFAULT_CONFIG, внешнего конфига и аргументов"
+      "Формирует ~/.dotfiles.conf на основе DEFAULT_CONFIG, внешнего конфига и аргументов"
   )
   parser.add_argument(
       "-c",
