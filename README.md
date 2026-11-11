@@ -59,14 +59,21 @@ $MYSCRIPTS/tools/create-755.sh --help
 
 ### Папка bin
 
-Каталог для собственных Go-бинарников. Путь к нему записан в переменную `$DOTFILES_BIN`, бинарники в git не попадают (кроме `.gitkeep`).
+Каталог Go-бинарников.
 
 ```shell
-GOBIN="$DOTFILES_BIN" go install ./cmd/myapp
-go build -o "$DOTFILES_BIN/myapp" .
+just build
+# или
+just build-one check-ip
 ```
 
-Переменная `GOBIN` глобально не задаётся: у остальных проектов остаётся путь по умолчанию `~/go/bin`.
+> заменить `check-ip` на любую другую команду. Список допустимых команд: `ls -l ./cmd`.
+
+Использование
+
+```shell
+$DOTFILES_BIN/check-ip
+```
 
 ### Папка configure
 

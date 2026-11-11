@@ -4,6 +4,14 @@
 default:
   @just --list --unsorted --justfile {{justfile()}}
 
+# Build all Go commands into ./bin
+build:
+  GOBIN={{justfile_directory()}}/bin go install ./cmd/...
+
+# Build one command
+build-one name:
+  GOBIN={{justfile_directory()}}/bin go install ./cmd/{{name}}
+
 # Install apps and nesseccery libraries
 install:
   ./install_scripts/main.sh
