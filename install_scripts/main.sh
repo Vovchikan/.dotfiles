@@ -22,13 +22,6 @@ function main() {
 function software() {
 
   echo
-  read -r -p "Install snap apps? [y/N] " response
-  if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-  then
-    sudo snap install tldr
-  fi
-
-  echo
   read -r -p "Install postgres? [y/N] " response
   if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
   then

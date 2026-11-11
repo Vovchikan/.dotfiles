@@ -20,6 +20,10 @@ install:
 install-cargo:
   ./install_scripts/cargo.sh
 
+# Install Rust CLI tool by crate name (crate ≠ binary: `just install-rust tlrc` → tldr)
+install-rust crate:
+  cargo install {{crate}}
+
 # Install some extensions for vs-code
 install-vscode-ext:
   ./install_scripts/vscode.sh
