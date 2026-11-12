@@ -8,6 +8,8 @@ supported_versions=(
   "24.10"
   "25.04"
   "25.10"
+  "26.04"
+  "26.10"
 )
 if ! check_ubuntu_version "${supported_versions[@]}"; then
   echo "✗ Система не поддерживается"
@@ -18,7 +20,10 @@ fi
 . /etc/os-release
 
 # Razer Daemon - https://openrazer.github.io/#download
+sudo add-apt-repository ppa:openrazer/stable
+sudo apt update
 sudo apt install -y openrazer-meta
+sudo gpasswd -a "$USER" plugdev
 # Razer gui https://github.com/z3ntu/RazerGenie?tab=readme-ov-file
 # Install instructions https://software.opensuse.org//download.html?project=hardware%3Arazer&package=razergenie
 echo "deb http://download.opensuse.org/repositories/hardware:/razer/xUbuntu_${VERSION_ID}/ /" | sudo tee /etc/apt/sources.list.d/hardware:razer.list
